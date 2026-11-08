@@ -13,8 +13,7 @@ import {
   RotateCw, 
   BookOpen, 
   Layers, 
-  Users, 
-  UserCheck
+  Users
 } from 'lucide-react';
 import { usePersistentStudentState } from '@/hooks/usePersistentStudentState';
 
@@ -97,14 +96,6 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-
-          <Link
-            href="/guru/login"
-            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-xs font-semibold text-blue-200 border border-white/10 transition"
-          >
-            <UserCheck className="w-4 h-4" />
-            <span>Portal Guru</span>
-          </Link>
         </div>
       </header>
 
