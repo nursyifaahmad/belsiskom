@@ -20,6 +20,7 @@ import {
 } from 'lucide-react';
 import { LEARNING_STEPS, LearningStep } from '@/data/learningContent';
 import PcBuilderSimulator from '@/components/simulator/PcBuilderSimulator';
+import Hardware3DViewer from '@/components/hardware3d/Hardware3DViewer';
 import { usePersistentStudentState } from '@/hooks/usePersistentStudentState';
 import confetti from 'canvas-confetti';
 
@@ -230,7 +231,7 @@ export default function LearningMaterialPage() {
       </div>
 
       {/* Main Material Card */}
-      <main className="max-w-3xl mx-auto w-full flex-1">
+      <main className="max-w-4xl mx-auto w-full flex-1">
         <div className="bg-slate-800/90 border border-slate-700 rounded-3xl p-5 md:p-8 shadow-2xl backdrop-blur-sm">
           {/* Step Header Title */}
           <div className="flex items-start gap-4 pb-6 border-b border-slate-700/80">
@@ -300,6 +301,13 @@ export default function LearningMaterialPage() {
                 )}
               </div>
             ))}
+
+            {/* Embedded 3D Hardware 360 Viewer on Step 2 */}
+            {currentStep.id === 'hardware-deep-dive' && (
+              <div className="mt-8 pt-6 border-t border-slate-700/80">
+                <Hardware3DViewer />
+              </div>
+            )}
 
             {/* Embedded PC Builder Simulator on Step 3 */}
             {currentStep.id === 'pc-assembly-simulator' && (
