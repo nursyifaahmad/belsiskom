@@ -14,6 +14,9 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
+# Pastikan folder public selalu ada
+RUN mkdir -p /app/public
+
 # Gunakan engine prisma lokal agar build 100% offline dan bebas ECONNRESET
 ENV PRISMA_QUERY_ENGINE_LIBRARY=/app/prisma/engines/libquery_engine-linux-musl-openssl-3.0.x.so.node
 ENV PRISMA_SCHEMA_ENGINE_BINARY=/app/prisma/engines/schema-engine-linux-musl-openssl-3.0.x
