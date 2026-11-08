@@ -1,7 +1,7 @@
 @echo off
 echo ==========================================================
 echo    BELSISKOM - Sinkronisasi Otomatis ke GitHub
-echo    Guru Pengampu: Ahmad Nursyifa, S.Pd.
+echo    Guru Pengampu: Ahmad Nursyifa, S.Kom.
 echo ==========================================================
 git add .
 set /p commit_msg="Masukkan pesan pembaruan (tekan Enter untuk pesan otomatis): "

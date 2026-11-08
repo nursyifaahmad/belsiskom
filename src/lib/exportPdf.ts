@@ -58,7 +58,7 @@ export function generateReportPdf(
   doc.text(`Kelas / Rombel : ${targetClass}`, leftX, 66);
 
   const rightX = 120;
-  doc.text(`Guru Pengampu  : Ahmad Nursyifa, S.Pd.`, rightX, 56);
+  doc.text(`Guru Pengampu  : Ahmad Nursyifa, S.Kom.`, rightX, 56);
   doc.text(`Tahun Ajaran     : 2026/2027`, rightX, 61);
   doc.text(`Kode Sesi Web   : ${sessionCode || 'Semua Sesi'}`, rightX, 66);
 
@@ -149,7 +149,7 @@ export function generateReportPdf(
   doc.text('Guru Mata Pelajaran Informatika,', pageWidth - 70, finalY + 5);
 
   doc.setFont('helvetica', 'bold');
-  doc.text('Ahmad Nursyifa, S.Pd.', pageWidth - 70, finalY + 28);
+  doc.text('Ahmad Nursyifa, S.Kom.', pageWidth - 70, finalY + 28);
   doc.setFont('helvetica', 'normal');
   doc.text('NIP. 19930411 202221 1 007', pageWidth - 70, finalY + 33);
 

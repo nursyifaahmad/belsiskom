@@ -13,7 +13,7 @@ model Teacher {
   id        String            @id @default(cuid())
   username  String            @unique
   password  String
-  name      String            @default("Ahmad Nursyifa, S.Pd.")
+  name      String            @default("Ahmad Nursyifa, S.Kom.")
   school    String            @default("SMP Negeri 2 Lemahabang")
   createdAt DateTime          @default(now())
   sessions  LearningSession[]

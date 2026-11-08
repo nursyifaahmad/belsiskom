@@ -273,7 +273,7 @@ export default function HomePage() {
 
       {/* Footer */}
       <footer className="border-t border-white/10 py-4 text-center text-xs text-slate-400">
-        <p>BELSISKOM © 2026 • Dirancang oleh <strong>Ahmad Nursyifa, S.Pd.</strong> untuk Informatika Kelas 7 SMPN 2 Lemahabang</p>
+        <p>BELSISKOM © 2026 • Dirancang oleh <strong>Ahmad Nursyifa, S.Kom.</strong> untuk Informatika Kelas 7 SMPN 2 Lemahabang</p>
       </footer>
     </div>
   );

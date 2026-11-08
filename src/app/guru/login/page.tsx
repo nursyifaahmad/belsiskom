@@ -59,7 +59,7 @@ export default function TeacherLoginPage() {
           </div>
           <h2 className="text-2xl font-bold">Portal Guru Informatika</h2>
           <div className="text-xs text-blue-300 font-semibold mt-1">
-            Ahmad Nursyifa, S.Pd.
+            Ahmad Nursyifa, S.Kom.
           </div>
           <p className="text-[11px] text-slate-400 mt-0.5">
             SMP Negeri 2 Lemahabang • Kelas 7-A s/d 7-G
@@ -112,7 +112,7 @@ export default function TeacherLoginPage() {
 
       {/* Footer */}
       <footer className="text-center text-[11px] text-slate-500">
-        BELSISKOM • Sistem Pembelajaran Terpadu • Guru Pengampu: Ahmad Nursyifa, S.Pd.
+        BELSISKOM • Sistem Pembelajaran Terpadu • Guru Pengampu: Ahmad Nursyifa, S.Kom.
       </footer>
     </div>
   );

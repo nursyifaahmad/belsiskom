@@ -115,7 +115,7 @@ export default function TeacherRekapPage() {
                 </span>
               </h1>
               <div className="text-xs text-slate-400">
-                Ahmad Nursyifa, S.Pd. • SMPN 2 Lemahabang
+                Ahmad Nursyifa, S.Kom. • SMPN 2 Lemahabang
               </div>
             </div>
           </div>

@@ -1,6 +1,6 @@
 # BELSISKOM (Belajar Sistem Komputer)
 ### Media Pembelajaran Terpadu Informatika SMP Kelas 7 (7-A s/d 7-G)
-**Guru Pengampu**: Ahmad Nursyifa, S.Pd. — **SMP Negeri 2 Lemahabang, Kab. Cirebon**
+**Guru Pengampu**: Ahmad Nursyifa, S.Kom. — **SMP Negeri 2 Lemahabang, Kab. Cirebon**
 
 ---
 
@@ -27,10 +27,10 @@ Aplikasi ini mengusung alur pembelajaran pedagogis Kurikulum Merdeka dengan mate
 - **Simulasi Interaktif Perakitan PC**: Siswa memasang Processor (CPU), Kipas Pendingin (Heatsink Fan), RAM DDR4, SSD NVMe, Kartu Grafis (VGA), dan Power Supply (PSU) ke slot Motherboard yang tepat dengan validasi logis.
 - **Validasi Pop-up Kuis Kilat**: Tombol langkah berikutnya hanya akan terbuka jika siswa telah berhasil memvalidasi kuis pemahaman di setiap langkah materi.
 - **Post-Test (Asesmen Sumatif 20 Soal)**: Terdiri dari 10 soal yang sama persis dengan diagnostik (mengukur delta pemahaman) ditambah 10 soal baru pendalaman materi.
-- **Sertifikat Digital & Perbandingan Nilai**: Menampilkan nilai Pre-Test vs Post-Test, persentase peningkatan skor, dan sertifikat kelulusan digital atas nama Ahmad Nursyifa, S.Pd.
+- **Sertifikat Digital & Perbandingan Nilai**: Menampilkan nilai Pre-Test vs Post-Test, persentase peningkatan skor, dan sertifikat kelulusan digital atas nama Ahmad Nursyifa, S.Kom.
 - **Tahan Crash / HP Restart**: Berkat sistem penyimpanan ganda (`localStorage` + background auto-sync), pengerjaan ujian atau materi tidak akan hilang sekalipun HP murid tiba-tiba restart, kehabisan baterai, atau tertutup browser.
 
-### 2. Portal Guru (Ahmad Nursyifa, S.Pd.)
+### 2. Portal Guru (Ahmad Nursyifa, S.Kom.)
 - **Akses Aman Password Guru**: Terproteksi kata sandi khusus (default: `guru123`).
 - **Manajemen Sesi Belajar Realtime**:
   - Buka/Tutup sesi belajar dengan satu klik.
@@ -144,4 +144,4 @@ Agar website dapat diakses dari internet oleh smartphone murid di sekolah tanpa 
 
 ---
 
-*Hak Cipta © 2026 Ahmad Nursyifa, S.Pd. — SMP Negeri 2 Lemahabang. Seluruh hak cipta dilindungi.*
+*Hak Cipta © 2026 Ahmad Nursyifa, S.Kom. — SMP Negeri 2 Lemahabang. Seluruh hak cipta dilindungi.*

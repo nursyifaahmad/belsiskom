@@ -3,7 +3,7 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: 'BELSISKOM - Belajar Sistem Komputer SMP',
-  description: 'Media Pembelajaran Terpadu Sistem Komputer (Hardware, Software, Brainware) untuk Murid SMP Kelas 7 - Guru: Ahmad Nursyifa, S.Pd.',
+  description: 'Media Pembelajaran Terpadu Sistem Komputer (Hardware, Software, Brainware) untuk Murid SMP Kelas 7 - Guru: Ahmad Nursyifa, S.Kom.',
   keywords: ['BELSISKOM', 'Sistem Komputer', 'Informatika SMP', 'Hardware', 'Software', 'Brainware', 'SMPN 2 Lemahabang'],
 };
 

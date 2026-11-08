@@ -9,13 +9,13 @@ async function main() {
   const teacher = await prisma.teacher.upsert({
     where: { username: 'ahmadnursyifa' },
     update: {
-      name: 'Ahmad Nursyifa, S.Pd.',
+      name: 'Ahmad Nursyifa, S.Kom.',
       school: 'SMP Negeri 2 Lemahabang',
     },
     create: {
       username: 'ahmadnursyifa',
       password: process.env.TEACHER_PASSWORD || 'guru123',
-      name: 'Ahmad Nursyifa, S.Pd.',
+      name: 'Ahmad Nursyifa, S.Kom.',
       school: 'SMP Negeri 2 Lemahabang',
     },
   });

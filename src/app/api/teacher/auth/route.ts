@@ -11,7 +11,7 @@ export async function POST(request: NextRequest) {
       const response = NextResponse.json({
         ok: true,
         teacher: {
-          name: 'Ahmad Nursyifa, S.Pd.',
+          name: 'Ahmad Nursyifa, S.Kom.',
           role: 'Guru Informatika',
           school: 'SMP Negeri 2 Lemahabang',
         },
