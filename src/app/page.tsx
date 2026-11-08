@@ -23,6 +23,7 @@ export default function HomePage() {
 
   const [activeSession, setActiveSession] = useState<any>(null);
   const [checkingSession, setCheckingSession] = useState(true);
+  const [validatingSession, setValidatingSession] = useState(false);
   const [sessionInputCode, setSessionInputCode] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
 
@@ -33,7 +34,7 @@ export default function HomePage() {
     try {
       const res = await fetch('/api/session/check');
       const data = await res.json();
-      if (data.ok && data.isActive) {
+      if (res.ok && data.ok && data.isActive) {
         setActiveSession(data.session);
       } else {
         setActiveSession(null);
@@ -50,13 +51,43 @@ export default function HomePage() {
     checkSessionStatus();
   }, []);
 
-  const handleStartLearning = () => {
-    if (sessionInputCode.trim()) {
-      router.push(`/murid/register?code=${encodeURIComponent(sessionInputCode.trim().toUpperCase())}`);
-    } else if (activeSession) {
-      router.push(`/murid/register?code=${activeSession.code}`);
+  const handleStartLearning = async () => {
+    setErrorMsg('');
+    const typedCode = sessionInputCode.trim().toUpperCase();
+
+    // Kasus 1: Murid memasukkan kode secara manual
+    if (typedCode) {
+      setValidatingSession(true);
+      try {
+        const res = await fetch(`/api/session/check?code=${encodeURIComponent(typedCode)}`);
+        const data = await res.json();
+
+        if (!res.ok || !data.ok) {
+          setErrorMsg(data.message || `Kode sesi "${typedCode}" tidak ditemukan! Periksa kembali kode dari Pak Guru Ahmad Nursyifa.`);
+          setValidatingSession(false);
+          return;
+        }
+
+        if (!data.session?.isActive) {
+          setErrorMsg(`Sesi "${typedCode}" sedang DITUTUP oleh Pak Guru Ahmad Nursyifa. Anda tidak dapat masuk.`);
+          setValidatingSession(false);
+          return;
+        }
+
+        // Kode terverifikasi dan aktif!
+        router.push(`/murid/register?code=${encodeURIComponent(typedCode)}`);
+      } catch (err: any) {
+        setErrorMsg('Gagal memverifikasi sesi: ' + err.message);
+        setValidatingSession(false);
+      }
+      return;
+    }
+
+    // Kasus 2: Murid tidak mengetik kode, cek sesi otomatis dari server
+    if (activeSession && activeSession.isActive) {
+      router.push(`/murid/register?code=${encodeURIComponent(activeSession.code)}`);
     } else {
-      setErrorMsg('Sesi belum dibuka oleh Pak Ahmad Nursyifa. Masukkan kode sesi jika guru telah membagikannya.');
+      setErrorMsg('Belum ada sesi belajar yang dibuka oleh Pak Guru Ahmad Nursyifa. Masukkan kode sesi yang valid jika guru telah membagikannya.');
     }
   };
 
@@ -220,10 +251,20 @@ export default function HomePage() {
 
             <button
               onClick={handleStartLearning}
-              className="w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-sm md:text-base shadow-lg shadow-blue-600/30 flex items-center justify-center gap-2 transition active:scale-[0.98]"
+              disabled={validatingSession || checkingSession}
+              className="w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-sm md:text-base shadow-lg shadow-blue-600/30 flex items-center justify-center gap-2 transition active:scale-[0.98] disabled:opacity-60"
             >
-              <span>Mulai Belajar BELSISKOM</span>
-              <ArrowRight className="w-4 h-4" />
+              {validatingSession ? (
+                <>
+                  <RotateCw className="w-4 h-4 animate-spin" />
+                  <span>Memeriksa Kode Sesi...</span>
+                </>
+              ) : (
+                <>
+                  <span>Mulai Belajar BELSISKOM</span>
+                  <ArrowRight className="w-4 h-4" />
+                </>
+              )}
             </button>
           </div>
         </div>
