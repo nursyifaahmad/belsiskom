@@ -1,0 +1,38 @@
+{
+  "name": "belsiskom",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "dev:host": "next dev -H 0.0.0.0 -p 4020",
+    "build": "next build",
+    "start": "next start -p 4020",
+    "postinstall": "prisma generate",
+    "sync": "node scripts/auto-sync.js"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.4.1",
+    "canvas-confetti": "^1.9.4",
+    "clsx": "^2.1.1",
+    "jspdf": "^2.5.2",
+    "jspdf-autotable": "^3.8.4",
+    "lucide-react": "^1.48.0",
+    "next": "^15.2.0",
+    "qrcode": "^1.5.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwind-merge": "^3.0.0",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.0.0",
+    "@types/canvas-confetti": "^1.9.0",
+    "@types/node": "^20.0.0",
+    "@types/qrcode": "^1.5.5",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "prisma": "^6.4.1",
+    "tailwindcss": "^4.0.0",
+    "typescript": "^5.0.0"
+  }
+}

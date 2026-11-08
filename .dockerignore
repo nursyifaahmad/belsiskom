@@ -1,0 +1,13 @@
+Dockerfile
+.dockerignore
+node_modules
+npm-debug.log
+README.md
+.next
+.git
+dev.db
+*.db-journal
+*.db-wal
+*.db-shm
+dev.bat
+sync.bat

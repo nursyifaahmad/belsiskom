@@ -1,0 +1,25 @@
+services:
+  belsiskom-app:
+    build: .
+    container_name: belsiskom-app
+    restart: unless-stopped
+    ports:
+      # Port 4020 pada host Mini PC (Bebas bentrok dengan port 3050, 3060, dll)
+      - "4020:3000"
+    volumes:
+      # Penyimpanan data persisten database di Mini PC
+      - /mnt/storage2/belsiskom/data:/app/data
+    environment:
+      DATABASE_URL: "file:/app/data/belsiskom.db"
+      JWT_SECRET: ${JWT_SECRET:-kunci_rahasia_belsiskom_ahmad_2026}
+      TEACHER_PASSWORD: ${TEACHER_PASSWORD:-guru123}
+      NODE_ENV: production
+      PORT: 3000
+      BASE_URL: ${BASE_URL:-https://belsiskom.an.my.id}
+    networks:
+      - belsiskom-net
+
+networks:
+  belsiskom-net:
+    name: belsiskom-net
+    driver: bridge

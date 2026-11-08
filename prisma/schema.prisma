@@ -1,0 +1,87 @@
+// Prisma Schema for BELSISKOM (Belajar Sistem Komputer)
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Teacher {
+  id        String            @id @default(cuid())
+  username  String            @unique
+  password  String
+  name      String            @default("Ahmad Nursyifa, S.Pd.")
+  school    String            @default("SMP Negeri 2 Lemahabang")
+  createdAt DateTime          @default(now())
+  sessions  LearningSession[]
+}
+
+model LearningSession {
+  id          String    @id @default(cuid())
+  code        String    @unique
+  title       String    @default("Pembelajaran Sistem Komputer")
+  targetClass String    @default("ALL") // "7-A", "7-B", "7-C", "7-D", "7-E", "7-F", "7-G", or "ALL"
+  isActive    Boolean   @default(true)
+  createdAt   DateTime  @default(now())
+  closedAt    DateTime?
+  teacherId   String?
+  teacher     Teacher?  @relation(fields: [teacherId], references: [id])
+  students    Student[]
+}
+
+model Student {
+  id               String            @id @default(cuid())
+  sessionId        String
+  session          LearningSession   @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  name             String
+  absentNo         Int
+  className        String            // "7-A" s/d "7-G"
+  deviceToken      String?           // Local device identifier
+  status           String            @default("DIAGNOSTIC") // DIAGNOSTIC, LEARNING, POSTTEST, COMPLETED
+  currentStep      Int               @default(1)
+  createdAt        DateTime          @default(now())
+  lastActiveAt     DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+  
+  diagnosticResult DiagnosticResult?
+  learningProgress LearningProgress?
+  postTestResult   PostTestResult?
+
+  @@unique([sessionId, className, absentNo])
+}
+
+model DiagnosticResult {
+  id             String   @id @default(cuid())
+  studentId      String   @unique
+  student        Student  @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  score          Float    // 0 - 100
+  correctCount   Int      // Jumlah benar dari 10
+  totalQuestions Int      @default(10)
+  answersJson    String   // JSON string of answers detail
+  submittedAt    DateTime @default(now())
+}
+
+model LearningProgress {
+  id                  String   @id @default(cuid())
+  studentId           String   @unique
+  student             Student  @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  completedStepsJson  String   @default("[]") // Array of completed step IDs
+  simulationCompleted Boolean  @default(false)
+  simulationScore     Int      @default(0)
+  quizValidationJson  String   @default("{}") // Validation pop-up quiz answers
+  updatedAt           DateTime @updatedAt
+}
+
+model PostTestResult {
+  id             String   @id @default(cuid())
+  studentId      String   @unique
+  student        Student  @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  score          Float    // 0 - 100
+  correctCount   Int      // Jumlah benar dari 20
+  totalQuestions Int      @default(20)
+  answersJson    String   // JSON string of answers detail
+  nGain          Float    @default(0) // Normalized gain = (post - diag) / (100 - diag)
+  submittedAt    DateTime @default(now())
+}
