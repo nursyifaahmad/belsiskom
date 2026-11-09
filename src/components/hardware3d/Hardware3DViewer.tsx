@@ -469,11 +469,11 @@ export default function Hardware3DViewer() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
             
             {/* Foto Produk Asli Nyata */}
-            <div className="relative rounded-2xl overflow-hidden border-2 border-slate-700 shadow-2xl bg-slate-900 group">
+            <div className="relative rounded-2xl overflow-hidden border-2 border-slate-700 shadow-2xl bg-slate-950 group">
               <img
                 src={activeSubItem.photoUrl}
                 alt={activeSubItem.realProductName}
-                className="w-full h-[280px] md:h-[340px] object-cover transition-transform duration-500 group-hover:scale-105"
+                className="w-full h-[280px] md:h-[340px] object-contain p-2 transition-transform duration-500 group-hover:scale-105"
                 loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent pointer-events-none" />

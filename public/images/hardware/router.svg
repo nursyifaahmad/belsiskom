@@ -1,83 +1,95 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 380" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" width="100%" height="100%">
   <defs>
+    <!-- Router Body Gradients -->
     <linearGradient id="routerBody" x1="0%" y1="0%" x2="0%" y2="100%">
       <stop offset="0%" stop-color="#1e293b" />
-      <stop offset="50%" stop-color="#0f172a" />
+      <stop offset="40%" stop-color="#0f172a" />
       <stop offset="100%" stop-color="#020617" />
     </linearGradient>
+
+    <!-- Glossy Accent Stripe -->
+    <linearGradient id="pianoBlack" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#090d16" />
+      <stop offset="50%" stop-color="#334155" />
+      <stop offset="100%" stop-color="#090d16" />
+    </linearGradient>
+
+    <!-- Drop Shadow Filter -->
     <filter id="routerShadow" x="-10%" y="-10%" width="120%" height="120%">
-      <feDropShadow dx="0" dy="10" stdDeviation="8" flood-color="#000" flood-opacity="0.5" />
+      <feDropShadow dx="0" dy="12" stdDeviation="10" flood-color="#000" flood-opacity="0.5" />
     </filter>
   </defs>
 
-  <!-- 4 Tall External Omni-Directional Antennas -->
-  <!-- Antenna 1 (Left tilted) -->
-  <line x1="75" y1="210" x2="45" y2="40" stroke="#020617" stroke-width="12" stroke-linecap="round" />
-  <circle cx="75" cy="210" r="10" fill="#334155" />
+  <!-- Dark Studio Background -->
+  <rect width="600" height="450" rx="16" fill="#090d16" />
+  <circle cx="300" cy="230" r="190" fill="#06b6d4" opacity="0.12" filter="blur(35px)" />
 
-  <!-- Antenna 2 (Middle Left) -->
-  <line x1="160" y1="200" x2="160" y2="30" stroke="#020617" stroke-width="12" stroke-linecap="round" />
-  <circle cx="160" cy="200" r="10" fill="#334155" />
+  <g filter="url(#routerShadow)">
+    <!-- 4 High-Gain Omni-Directional Antennas -->
+    <!-- Antenna 1 (Far Left tilted outwards) -->
+    <line x1="140" y1="240" x2="80" y2="70" stroke="#020617" stroke-width="12" stroke-linecap="round" />
+    <line x1="140" y1="240" x2="80" y2="70" stroke="#334155" stroke-width="6" stroke-linecap="round" />
+    <circle cx="140" cy="240" r="10" fill="#1e293b" stroke="#475569" stroke-width="2" />
 
-  <!-- Antenna 3 (Middle Right) -->
-  <line x1="290" y1="200" x2="290" y2="30" stroke="#020617" stroke-width="12" stroke-linecap="round" />
-  <circle cx="290" cy="200" r="10" fill="#334155" />
+    <!-- Antenna 2 (Inner Left vertical) -->
+    <line x1="220" y1="220" x2="200" y2="45" stroke="#020617" stroke-width="12" stroke-linecap="round" />
+    <line x1="220" y1="220" x2="200" y2="45" stroke="#334155" stroke-width="6" stroke-linecap="round" />
+    <circle cx="220" cy="220" r="10" fill="#1e293b" stroke="#475569" stroke-width="2" />
 
-  <!-- Antenna 4 (Right tilted) -->
-  <line x1="375" y1="210" x2="405" y2="40" stroke="#020617" stroke-width="12" stroke-linecap="round" />
-  <circle cx="375" cy="210" r="10" fill="#334155" />
+    <!-- Antenna 3 (Inner Right vertical) -->
+    <line x1="380" y1="220" x2="400" y2="45" stroke="#020617" stroke-width="12" stroke-linecap="round" />
+    <line x1="380" y1="220" x2="400" y2="45" stroke="#334155" stroke-width="6" stroke-linecap="round" />
+    <circle cx="380" cy="220" r="10" fill="#1e293b" stroke="#475569" stroke-width="2" />
 
-  <!-- Wi-Fi Radio Waves Visual Cue (Cyan Glowing Waves) -->
-  <g stroke="#38bdf8" stroke-width="3" fill="none" opacity="0.65">
-    <path d="M 195,60 A 30,30 0 0,1 255,60" />
-    <path d="M 180,45 A 50,50 0 0,1 270,45" />
-    <path d="M 165,30 A 70,70 0 0,1 285,30" />
+    <!-- Antenna 4 (Far Right tilted outwards) -->
+    <line x1="460" y1="240" x2="520" y2="70" stroke="#020617" stroke-width="12" stroke-linecap="round" />
+    <line x1="460" y1="240" x2="520" y2="70" stroke="#334155" stroke-width="6" stroke-linecap="round" />
+    <circle cx="460" cy="240" r="10" fill="#1e293b" stroke="#475569" stroke-width="2" />
+
+    <!-- Main Router Chassis (Archer AX55 Slanted Geometry) -->
+    <!-- Base Platform -->
+    <polygon points="120,290 480,290 510,335 90,335" fill="url(#routerBody)" stroke="#334155" stroke-width="2" />
+    <polygon points="135,230 465,230 480,290 120,290" fill="url(#routerBody)" stroke="#1e293b" stroke-width="2" />
+
+    <!-- Slanted Textured Cooling Fins (X-Pattern / Slats) -->
+    <g stroke="#1e293b" stroke-width="2">
+      <line x1="160" y1="240" x2="145" y2="280" />
+      <line x1="180" y1="240" x2="165" y2="280" />
+      <line x1="200" y1="240" x2="185" y2="280" />
+      <line x1="220" y1="240" x2="205" y2="280" />
+      <line x1="380" y1="240" x2="395" y2="280" />
+      <line x1="400" y1="240" x2="415" y2="280" />
+      <line x1="420" y1="240" x2="435" y2="280" />
+      <line x1="440" y1="240" x2="455" y2="280" />
+    </g>
+
+    <!-- Glossy Central Diamond Stripe -->
+    <polygon points="260,230 340,230 350,290 250,290" fill="url(#pianoBlack)" stroke="#475569" stroke-width="1.5" />
+    <text x="300" y="265" font-family="Arial, sans-serif" font-weight="900" font-size="14" fill="#f8fafc" text-anchor="middle" letter-spacing="2">tp-link</text>
+
+    <!-- Front Lower Bevel with Status LEDs -->
+    <rect x="90" y="325" width="420" height="15" fill="#090d16" rx="2" stroke="#1e293b" stroke-width="1" />
+
+    <!-- Row of Active Green LEDs -->
+    <!-- Power LED -->
+    <circle cx="240" cy="332" r="3" fill="#22c55e" filter="drop-shadow(0 0 3px #22c55e)" />
+    <!-- 2.4GHz Wi-Fi LED -->
+    <circle cx="270" cy="332" r="3" fill="#22c55e" filter="drop-shadow(0 0 3px #22c55e)" />
+    <!-- 5GHz Wi-Fi LED -->
+    <circle cx="300" cy="332" r="3" fill="#22c55e" filter="drop-shadow(0 0 3px #22c55e)" />
+    <!-- Internet LED (Blue) -->
+    <circle cx="330" cy="332" r="3" fill="#38bdf8" filter="drop-shadow(0 0 3px #38bdf8)" />
+    <!-- LAN LED -->
+    <circle cx="360" cy="332" r="3" fill="#22c55e" filter="drop-shadow(0 0 3px #22c55e)" />
+
+    <!-- LED Labels -->
+    <text x="300" y="355" font-family="'Consolas', monospace" font-size="9" fill="#64748b" text-anchor="middle">PWR • 2.4G • 5G • INTERNET • ETHERNET</text>
   </g>
 
-  <!-- Router Aerodynamic Main Chassis -->
-  <polygon points="50,220 400,220 430,290 20,290" fill="url(#routerBody)" stroke="#334155" stroke-width="3" filter="url(#routerShadow)" />
-
-  <!-- Front Bezel Lip -->
-  <rect x="20" y="290" width="410" height="30" rx="8" fill="#090d16" stroke="#1e293b" stroke-width="2" />
-
-  <!-- Top Geometric Texture Lines & Cooling Grilles -->
-  <g stroke="#334155" stroke-width="2">
-    <line x1="120" y1="235" x2="330" y2="235" />
-    <line x1="100" y1="250" x2="350" y2="250" />
-    <line x1="80" y1="265" x2="370" y2="265" />
+  <!-- Clear Badge Overlay in Visual -->
+  <g transform="translate(30, 395)">
+    <rect width="250" height="30" rx="15" fill="#06b6d4" opacity="0.2" stroke="#22d3ee" stroke-width="1.5" />
+    <circle cx="16" cy="15" r="5" fill="#22d3ee" />
+    <text x="30" y="20" font-family="Arial, sans-serif" font-weight="bold" font-size="12" fill="#cffafe">WI-FI ROUTER 4 ANTENA (COMM)</text>
   </g>
-
-  <!-- Brand Logo Text -->
-  <text x="225" y="275" font-family="Arial, sans-serif" font-weight="900" font-size="20" fill="#38bdf8" text-anchor="middle">tp-link</text>
-  <text x="225" y="295" font-family="'Consolas', monospace" font-size="11" fill="#94a3b8" text-anchor="middle">Wi-Fi 6 GIGABIT ROUTER</text>
-
-  <!-- Front Status LED Indicators (Glowing Green Dots) -->
-  <g fill="#22c55e">
-    <circle cx="130" cy="305" r="4" />
-    <circle cx="165" cy="305" r="4" />
-    <circle cx="200" cy="305" r="4" />
-    <circle cx="235" cy="305" r="4" />
-    <circle cx="270" cy="305" r="4" />
-    <circle cx="305" cy="305" r="4" />
-  </g>
-  <g fill="#94a3b8" font-family="'Consolas', monospace" font-size="9" text-anchor="middle">
-    <text x="130" y="318">PWR</text>
-    <text x="165" y="318">2.4G</text>
-    <text x="200" y="318">5G</text>
-    <text x="235" y="318">WAN</text>
-    <text x="270" y="318">LAN</text>
-    <text x="305" y="318">WPS</text>
-  </g>
-
-  <!-- Rear Gigabit LAN Ports Hint (Yellow Ports) -->
-  <g fill="#facc15" stroke="#ca8a04" stroke-width="1.5">
-    <rect x="150" y="202" width="22" height="15" rx="2" />
-    <rect x="180" y="202" width="22" height="15" rx="2" />
-    <rect x="210" y="202" width="22" height="15" rx="2" />
-    <rect x="240" y="202" width="22" height="15" rx="2" />
-  </g>
-  <!-- 1 Blue WAN Internet Port -->
-  <rect x="275" y="202" width="22" height="15" rx="2" fill="#2563eb" stroke="#1d4ed8" stroke-width="1.5" />
-
-  <text x="225" y="360" font-family="'Consolas', monospace" font-weight="bold" font-size="13" fill="#facc15" text-anchor="middle">WI-FI ROUTER (PERANGKAT KOMUNIKASI / JARINGAN)</text>
 </svg>

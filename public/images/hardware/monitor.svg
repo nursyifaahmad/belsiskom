@@ -1,52 +1,79 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 380" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" width="100%" height="100%">
   <defs>
+    <!-- Screen Desktop Wallpaper Gradient (Windows 11 Bloom Blue Style) -->
     <linearGradient id="screenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#0284c7" />
-      <stop offset="50%" stop-color="#0369a1" />
+      <stop offset="35%" stop-color="#3b82f6" />
+      <stop offset="70%" stop-color="#1d4ed8" />
       <stop offset="100%" stop-color="#0f172a" />
     </linearGradient>
+
+    <!-- Monitor Bezel Plastic -->
+    <linearGradient id="bezelGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#090d16" />
+    </linearGradient>
+
+    <!-- Drop Shadow Filter -->
     <filter id="monShadow" x="-10%" y="-10%" width="120%" height="120%">
-      <feDropShadow dx="0" dy="8" stdDeviation="6" flood-color="#000" flood-opacity="0.4" />
+      <feDropShadow dx="0" dy="12" stdDeviation="10" flood-color="#000" flood-opacity="0.5" />
     </filter>
   </defs>
 
-  <!-- Monitor Stand Base -->
-  <rect x="150" y="320" width="150" height="18" rx="6" fill="#64748b" stroke="#475569" stroke-width="2" filter="url(#monShadow)" />
-  <!-- Stand Neck Pole -->
-  <rect x="210" y="240" width="30" height="90" rx="4" fill="#94a3b8" stroke="#64748b" stroke-width="2" />
+  <!-- Dark Studio Background -->
+  <rect width="600" height="450" rx="16" fill="#090d16" />
+  <circle cx="300" cy="190" r="190" fill="#3b82f6" opacity="0.12" filter="blur(35px)" />
 
-  <!-- Outer Monitor Bezel Frame -->
-  <rect x="35" y="30" width="380" height="230" rx="12" fill="#0f172a" stroke="#334155" stroke-width="4" filter="url(#monShadow)" />
+  <g filter="url(#monShadow)">
+    <!-- Monitor Stand Base (Flat Rectangular Modern Desk Base) -->
+    <rect x="220" y="340" width="160" height="20" rx="6" fill="#334155" stroke="#475569" stroke-width="2" />
+    <rect x="225" y="342" width="150" height="4" fill="#64748b" opacity="0.5" />
 
-  <!-- Inner Active Display Panel (Windows 11 Screen) -->
-  <rect x="45" y="40" width="360" height="200" rx="4" fill="url(#screenGrad)" />
+    <!-- Stand Neck Pole -->
+    <polygon points="280,265 320,265 315,340 285,340" fill="#1e293b" stroke="#334155" stroke-width="2" />
 
-  <!-- Windows 11 Bloom Ambient Art -->
-  <ellipse cx="225" cy="130" rx="90" ry="50" fill="#38bdf8" opacity="0.35" />
+    <!-- Monitor Outer Cabinet (3-Side Virtually Borderless Bezel) -->
+    <rect x="75" y="45" width="450" height="260" rx="8" fill="url(#bezelGrad)" stroke="#334155" stroke-width="2.5" />
 
-  <!-- Active Application Window on Screen -->
-  <rect x="80" y="65" width="290" height="135" rx="6" fill="#0f172a" stroke="#38bdf8" stroke-width="2" opacity="0.95" />
-  <!-- Title bar -->
-  <rect x="80" y="65" width="290" height="24" rx="4" fill="#1e293b" />
-  <circle cx="95" cy="77" r="4" fill="#ef4444" />
-  <circle cx="110" cy="77" r="4" fill="#f59e0b" />
-  <circle cx="125" cy="77" r="4" fill="#22c55e" />
-  <text x="145" y="81" font-family="'Segoe UI', Arial" font-size="10" fill="#cbd5e1">BELSISKOM - Informatika SMP</text>
+    <!-- IPS Active Display Panel (16:9 Aspect Ratio) -->
+    <rect x="83" y="53" width="434" height="236" fill="url(#screenGrad)" />
 
-  <!-- Window Content lines -->
-  <text x="100" y="115" font-family="'Segoe UI', Arial" font-weight="bold" font-size="14" fill="#38bdf8">Sistem Komputer Kelas 7</text>
-  <text x="100" y="135" font-family="'Segoe UI', Arial" font-size="11" fill="#94a3b8">Menampilkan Output Visual ke Layar Monitor</text>
-  <rect x="100" y="150" width="120" height="25" rx="4" fill="#2563eb" />
-  <text x="160" y="166" font-family="'Segoe UI', Arial" font-weight="bold" font-size="11" fill="#fff" text-anchor="middle">Mulai Belajar ➔</text>
+    <!-- Windows 11 Bloom Abstract Wave on Screen -->
+    <path d="M 200,240 Q 250,120 300,160 T 400,140 Q 450,200 480,240 Z" fill="#60a5fa" opacity="0.35" filter="blur(8px)" />
+    <path d="M 230,240 Q 280,140 330,170 T 430,160 Z" fill="#93c5fd" opacity="0.45" filter="blur(5px)" />
 
-  <!-- Bottom Taskbar -->
-  <rect x="45" y="222" width="360" height="18" fill="#090d16" />
-  <g fill="#38bdf8">
-    <circle cx="215" cy="231" r="3" />
-    <circle cx="225" cy="231" r="3" />
-    <circle cx="235" cy="231" r="3" />
+    <!-- App Window (BELSISKOM Learning Portal Active on Screen) -->
+    <rect x="130" y="75" width="340" height="175" rx="6" fill="#0f172a" opacity="0.92" stroke="#38bdf8" stroke-width="1.5" />
+    <!-- Window Titlebar -->
+    <rect x="130" y="75" width="340" height="22" rx="6" fill="#1e293b" />
+    <circle cx="145" cy="86" r="3.5" fill="#ef4444" />
+    <circle cx="156" cy="86" r="3.5" fill="#eab308" />
+    <circle cx="167" cy="86" r="3.5" fill="#22c55e" />
+    <text x="300" y="90" font-family="Arial, sans-serif" font-weight="bold" font-size="9" fill="#93c5fd" text-anchor="middle">BELSISKOM - SMPN 2 Lemahabang</text>
+    <!-- Window Content Simulation -->
+    <text x="300" y="145" font-family="'Segoe UI', Arial, sans-serif" font-weight="900" font-size="16" fill="#ffffff" text-anchor="middle">SISTEM KOMPUTER KELAS 7</text>
+    <text x="300" y="170" font-family="Arial, sans-serif" font-size="10" fill="#38bdf8" text-anchor="middle">Media Belajar Informatika Interaktif</text>
+
+    <!-- Windows 11 Centered Taskbar at Bottom of Screen -->
+    <rect x="83" y="271" width="434" height="18" fill="#0b1329" opacity="0.95" />
+    <!-- Taskbar Icons -->
+    <rect x="270" y="274" width="10" height="10" rx="1.5" fill="#38bdf8" />
+    <rect x="285" y="274" width="10" height="10" rx="1.5" fill="#60a5fa" />
+    <rect x="300" y="274" width="10" height="10" rx="1.5" fill="#f59e0b" />
+    <rect x="315" y="274" width="10" height="10" rx="1.5" fill="#10b981" />
+
+    <!-- Monitor Chin (Bottom Bezel) with LG Logo -->
+    <rect x="75" y="289" width="450" height="16" rx="2" fill="#0f172a" stroke="#1e293b" stroke-width="1" />
+    <text x="300" y="301" font-family="Arial, sans-serif" font-weight="bold" font-size="9" fill="#64748b" text-anchor="middle" letter-spacing="1">LG IPS FULL HD</text>
+
+    <!-- Power LED at Bottom Right -->
+    <circle cx="505" cy="297" r="2" fill="#22c55e" />
   </g>
 
-  <!-- LG/Monitor Brand Logo on Chin -->
-  <text x="225" y="254" font-family="Arial, sans-serif" font-weight="bold" font-size="10" fill="#64748b" text-anchor="middle">MONITOR LAYAR (OUTPUT DEVICE)</text>
+  <!-- Clear Badge Overlay in Visual -->
+  <g transform="translate(30, 395)">
+    <rect width="240" height="30" rx="15" fill="#8b5cf6" opacity="0.2" stroke="#a78bfa" stroke-width="1.5" />
+    <circle cx="16" cy="15" r="5" fill="#a78bfa" />
+    <text x="30" y="20" font-family="Arial, sans-serif" font-weight="bold" font-size="12" fill="#ede9fe">MONITOR KOMPUTER (OUTPUT)</text>
+  </g>
 </svg>

@@ -1,8 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 240" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" width="100%" height="100%">
   <defs>
     <linearGradient id="ramSpreader" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#18181b" />
-      <stop offset="50%" stop-color="#27272a" />
+      <stop offset="40%" stop-color="#27272a" />
+      <stop offset="70%" stop-color="#18181b" />
       <stop offset="100%" stop-color="#09090b" />
     </linearGradient>
     <linearGradient id="goldBus" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -11,78 +12,76 @@
       <stop offset="100%" stop-color="#ca8a04" />
     </linearGradient>
     <filter id="shadowRam" x="-5%" y="-10%" width="110%" height="130%">
-      <feDropShadow dx="0" dy="6" stdDeviation="5" flood-color="#000" flood-opacity="0.5" />
+      <feDropShadow dx="0" dy="12" stdDeviation="8" flood-color="#000" flood-opacity="0.5" />
     </filter>
   </defs>
 
-  <!-- Green PCB Underlayer -->
-  <rect x="20" y="40" width="460" height="150" rx="6" fill="#15803d" stroke="#166534" stroke-width="3" filter="url(#shadowRam)" />
+  <!-- Dark Studio Background -->
+  <rect width="600" height="450" rx="16" fill="#090d16" />
+  <circle cx="300" cy="210" r="180" fill="#0284c7" opacity="0.12" filter="blur(30px)" />
 
-  <!-- Gold Contact Pins (Bus Edge) at Bottom -->
-  <g fill="url(#goldBus)">
-    <!-- Left pin group (before notch) -->
-    <rect x="35" y="170" width="200" height="26" rx="2" />
-    <!-- Right pin group (after notch) -->
-    <rect x="265" y="170" width="200" height="26" rx="2" />
+  <g filter="url(#shadowRam)">
+    <!-- Black Substrate PCB Behind Heatspreader -->
+    <rect x="50" y="140" width="500" height="130" rx="4" fill="#09090b" stroke="#27272a" stroke-width="2" />
+
+    <!-- Gold Contact Edge Pins (DDR4 288-Pin Curved Edge) -->
+    <!-- Left Pin Bank -->
+    <rect x="55" y="240" width="220" height="30" rx="2" fill="url(#goldBus)" stroke="#ca8a04" stroke-width="1" />
+    <!-- DDR4 Center Alignment Notch (Celah Pengaman Anti-Terbalik) -->
+    <rect x="275" y="235" width="14" height="36" fill="#090d16" />
+    <!-- Right Pin Bank -->
+    <rect x="289" y="240" width="256" height="30" rx="2" fill="url(#goldBus)" stroke="#ca8a04" stroke-width="1" />
+
+    <!-- Pin Vertical Stripes Simulation -->
+    <g stroke="#a16207" stroke-width="1" opacity="0.6">
+      <line x1="80" y1="242" x2="80" y2="268" /><line x1="110" y1="242" x2="110" y2="268" />
+      <line x1="140" y1="242" x2="140" y2="268" /><line x1="170" y1="242" x2="170" y2="268" />
+      <line x1="200" y1="242" x2="200" y2="268" /><line x1="230" y1="242" x2="230" y2="268" />
+      <line x1="320" y1="242" x2="320" y2="268" /><line x1="350" y1="242" x2="350" y2="268" />
+      <line x1="380" y1="242" x2="380" y2="268" /><line x1="410" y1="242" x2="410" y2="268" />
+      <line x1="440" y1="242" x2="440" y2="268" /><line x1="470" y1="242" x2="470" y2="268" />
+      <line x1="500" y1="242" x2="500" y2="268" />
+    </g>
+
+    <!-- Aluminum Heatspreader Armor (Kingston FURY Style) -->
+    <path d="M 50,140 L 150,140 L 170,120 L 430,120 L 450,140 L 550,140 L 550,238 L 50,238 Z" fill="url(#ramSpreader)" stroke="#3f3f46" stroke-width="2" />
+
+    <!-- Aggressive Heat Spreader Ridges & Cuts -->
+    <g fill="#09090b" stroke="#27272a" stroke-width="1.5">
+      <polygon points="180,128 210,128 200,136 170,136" />
+      <polygon points="230,128 260,128 250,136 220,136" />
+      <polygon points="340,128 370,128 360,136 330,136" />
+      <polygon points="390,128 420,128 410,136 380,136" />
+    </g>
+
+    <!-- FURY Logo Laser Cut Out Emprint -->
+    <text x="170" y="185" font-family="Arial, sans-serif" font-weight="900" font-size="32" fill="#ffffff" letter-spacing="4">FURY</text>
+    <text x="170" y="212" font-family="'Segoe UI', Arial, sans-serif" font-weight="900" font-size="16" fill="#ef4444" letter-spacing="2">BEAST</text>
+    <text x="255" y="212" font-family="'Consolas', monospace" font-weight="bold" font-size="13" fill="#a1a1aa">DDR4</text>
+
+    <!-- White Technical Spec Sticker Label -->
+    <rect x="360" y="160" width="175" height="65" rx="3" fill="#ffffff" stroke="#cbd5e1" stroke-width="1" />
+    <!-- Kingston Logo & Details -->
+    <text x="370" y="176" font-family="Arial, sans-serif" font-weight="bold" font-size="11" fill="#dc2626">Kingston®</text>
+    <text x="440" y="176" font-family="'Consolas', monospace" font-size="10" font-weight="bold" fill="#0f172a">16GB 3200MHz</text>
+    <text x="370" y="192" font-family="'Consolas', monospace" font-size="8.5" fill="#334155">KF432C16BB/16 • 1.35V</text>
+    <!-- Barcode -->
+    <g fill="#0f172a">
+      <rect x="370" y="200" width="2" height="16" /><rect x="374" y="200" width="3" height="16" />
+      <rect x="379" y="200" width="1" height="16" /><rect x="382" y="200" width="4" height="16" />
+      <rect x="388" y="200" width="2" height="16" /><rect x="392" y="200" width="3" height="16" />
+      <rect x="397" y="200" width="4" height="16" /><rect x="403" y="200" width="1" height="16" />
+      <rect x="406" y="200" width="3" height="16" /><rect x="411" y="200" width="2" height="16" />
+      <rect x="415" y="200" width="4" height="16" /><rect x="421" y="200" width="2" height="16" />
+      <rect x="425" y="200" width="1" height="16" /><rect x="428" y="200" width="3" height="16" />
+    </g>
+    <text x="440" y="213" font-family="'Consolas', monospace" font-size="8" fill="#64748b">9905743-E01.A00LF</text>
   </g>
 
-  <!-- Individual gold pin lines -->
-  <g stroke="#a16207" stroke-width="1.5">
-    <line x1="45" y1="170" x2="45" y2="196" /><line x1="60" y1="170" x2="60" y2="196" />
-    <line x1="75" y1="170" x2="75" y2="196" /><line x1="90" y1="170" x2="90" y2="196" />
-    <line x1="105" y1="170" x2="105" y2="196" /><line x1="120" y1="170" x2="120" y2="196" />
-    <line x1="135" y1="170" x2="135" y2="196" /><line x1="150" y1="170" x2="150" y2="196" />
-    <line x1="165" y1="170" x2="165" y2="196" /><line x1="180" y1="170" x2="180" y2="196" />
-    <line x1="195" y1="170" x2="195" y2="196" /><line x1="210" y1="170" x2="210" y2="196" />
-    <line x1="225" y1="170" x2="225" y2="196" />
-
-    <line x1="275" y1="170" x2="275" y2="196" /><line x1="290" y1="170" x2="290" y2="196" />
-    <line x1="305" y1="170" x2="305" y2="196" /><line x1="320" y1="170" x2="320" y2="196" />
-    <line x1="335" y1="170" x2="335" y2="196" /><line x1="350" y1="170" x2="350" y2="196" />
-    <line x1="365" y1="170" x2="365" y2="196" /><line x1="380" y1="170" x2="380" y2="196" />
-    <line x1="395" y1="170" x2="395" y2="196" /><line x1="410" y1="170" x2="410" y2="196" />
-    <line x1="425" y1="170" x2="425" y2="196" /><line x1="440" y1="170" x2="440" y2="196" />
-    <line x1="455" y1="170" x2="455" y2="196" />
-  </g>
-
-  <!-- Key Notch (Celah Pengaman Kunci di Tengah Bawah) -->
-  <path d="M 235,170 C 235,182 245,190 250,190 C 255,190 265,182 265,170 Z" fill="#0f172a" />
-
-  <!-- Side Latch Notches (Klip Sayap Pengunci Ujung) -->
-  <rect x="15" y="80" width="10" height="20" rx="3" fill="#0f172a" />
-  <rect x="475" y="80" width="10" height="20" rx="3" fill="#0f172a" />
-
-  <!-- Aluminum Heat Spreader Shield -->
-  <path d="M 25,48 L 475,48 L 475,160 L 25,160 Z" fill="url(#ramSpreader)" stroke="#3f3f46" stroke-width="2" />
-
-  <!-- Aggressive Top Ridges / Heatsink Fins -->
-  <polygon points="35,48 55,28 85,28 95,48" fill="#27272a" stroke="#52525b" stroke-width="1.5" />
-  <polygon points="120,48 140,28 170,28 180,48" fill="#27272a" stroke="#52525b" stroke-width="1.5" />
-  <polygon points="320,48 330,28 360,28 380,48" fill="#27272a" stroke="#52525b" stroke-width="1.5" />
-  <polygon points="405,48 415,28 445,28 465,48" fill="#27272a" stroke="#52525b" stroke-width="1.5" />
-
-  <!-- Red Accent Trim -->
-  <polygon points="35,65 140,65 110,85 35,85" fill="#ef4444" />
-
-  <!-- Brand Typography -->
-  <text x="148" y="82" font-family="'Arial Black', Impact, sans-serif" font-weight="900" font-size="24" fill="#ffffff">FURY</text>
-  <text x="228" y="80" font-family="Arial, sans-serif" font-weight="bold" font-size="16" fill="#a1a1aa">BEAST DDR4</text>
-
-  <!-- White Specification Label Sticker -->
-  <rect x="45" y="100" width="410" height="48" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
-  <text x="60" y="122" font-family="'Consolas', monospace" font-weight="bold" font-size="14" fill="#0f172a">KF432C16BB/16</text>
-  <text x="60" y="138" font-family="'Consolas', monospace" font-size="11" fill="#475569">16GB 3200MHz CL16 1.35V 288-Pin DIMM</text>
-
-  <!-- Barcode Simulation -->
-  <g fill="#0f172a">
-    <rect x="330" y="108" width="3" height="32" /><rect x="335" y="108" width="5" height="32" />
-    <rect x="343" y="108" width="2" height="32" /><rect x="347" y="108" width="4" height="32" />
-    <rect x="354" y="108" width="6" height="32" /><rect x="363" y="108" width="3" height="32" />
-    <rect x="369" y="108" width="5" height="32" /><rect x="377" y="108" width="2" height="32" />
-    <rect x="382" y="108" width="4" height="32" /><rect x="389" y="108" width="3" height="32" />
-    <rect x="395" y="108" width="5" height="32" /><rect x="403" y="108" width="2" height="32" />
-    <rect x="408" y="108" width="6" height="32" /><rect x="417" y="108" width="4" height="32" />
-    <rect x="424" y="108" width="3" height="32" /><rect x="430" y="108" width="5" height="32" />
-    <rect x="438" y="108" width="2" height="32" />
+  <!-- Clear Badge Overlay in Visual -->
+  <g transform="translate(30, 395)">
+    <rect width="240" height="30" rx="15" fill="#10b981" opacity="0.2" stroke="#34d399" stroke-width="1.5" />
+    <circle cx="16" cy="15" r="5" fill="#34d399" />
+    <text x="30" y="20" font-family="Arial, sans-serif" font-weight="bold" font-size="12" fill="#d1fae5">KEPINGAN MEMORI RAM DDR4</text>
   </g>
 </svg>
