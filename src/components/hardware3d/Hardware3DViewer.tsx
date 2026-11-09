@@ -17,7 +17,12 @@ import {
   Hand,
   Layers,
   Pause,
-  Play
+  Play,
+  Camera,
+  Box,
+  ExternalLink,
+  ShieldCheck,
+  Zap
 } from 'lucide-react';
 import { 
   HARDWARE_CATEGORIES, 
@@ -25,6 +30,7 @@ import {
   HardwareSubItem 
 } from './hardwareData';
 import { buildHardwareModel } from './hardwareModelBuilders';
+import { createStudioEnvMap } from './hardwareTextureGenerators';
 
 const CATEGORY_ICONS: Record<HardwareCategory, any> = {
   input: Keyboard,
@@ -34,12 +40,15 @@ const CATEGORY_ICONS: Record<HardwareCategory, any> = {
   communication: Wifi,
 };
 
+type ViewMode = '3d' | 'photo';
+
 export default function Hardware3DViewer() {
   const [activeCategory, setActiveCategory] = useState<HardwareCategory>('input');
   const [activeSubItemId, setActiveSubItemId] = useState<string>('keyboard');
+  const [viewMode, setViewMode] = useState<ViewMode>('3d');
   
   // Bug fix: use mutable ref for autoRotate so requestAnimationFrame closure is never stale
-  const [autoRotate, setAutoRotate] = useState(false); // default false for stability, user can toggle on/off
+  const [autoRotate, setAutoRotate] = useState(false);
   const autoRotateRef = useRef(false);
 
   const containerRef = useRef<HTMLDivElement>(null);
@@ -78,9 +87,9 @@ export default function Hardware3DViewer() {
       currentModelGroup.current = null;
     }
 
-    // 2. Build new procedural model
+    // 2. Build high-fidelity procedural model with authentic decals
     const newGroup = buildHardwareModel(subItemId);
-    newGroup.rotation.set(0.35, -0.45, 0); // Good initial perspective
+    newGroup.rotation.set(0.35, -0.45, 0); // Optimal initial 3D perspective
     sceneRef.current.add(newGroup);
     currentModelGroup.current = newGroup;
 
@@ -92,10 +101,10 @@ export default function Hardware3DViewer() {
   }, []);
 
   // ==========================================
-  // THREE.JS INITIALIZATION
+  // THREE.JS INITIALIZATION (Only in 3D Mode)
   // ==========================================
   useEffect(() => {
-    if (!containerRef.current) return;
+    if (viewMode !== '3d' || !containerRef.current) return;
 
     // 1. Scene setup
     const scene = new THREE.Scene();
@@ -115,15 +124,20 @@ export default function Hardware3DViewer() {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.1;
     rendererRef.current = renderer;
 
     containerRef.current.replaceChildren(renderer.domElement);
 
-    // 4. Lighting setup
-    const ambientLight = new THREE.AmbientLight(0xffffff, 1.5);
+    // 4. Studio Environment Lighting (Realistic Metallic Reflections)
+    const envMap = createStudioEnvMap(renderer);
+    scene.environment = envMap;
+
+    const ambientLight = new THREE.AmbientLight(0xffffff, 1.4);
     scene.add(ambientLight);
 
-    const mainLight = new THREE.DirectionalLight(0xffffff, 2.0);
+    const mainLight = new THREE.DirectionalLight(0xffffff, 2.2);
     mainLight.position.set(5, 8, 5);
     mainLight.castShadow = true;
     scene.add(mainLight);
@@ -144,7 +158,6 @@ export default function Hardware3DViewer() {
     const animate = () => {
       animationFrameId = requestAnimationFrame(animate);
 
-      // Check autoRotateRef.current directly every single frame
       if (currentModelGroup.current && autoRotateRef.current && !isPointerDown.current) {
         currentModelGroup.current.rotation.y += 0.008;
       }
@@ -168,25 +181,30 @@ export default function Hardware3DViewer() {
     return () => {
       window.removeEventListener('resize', handleResize);
       cancelAnimationFrame(animationFrameId);
+      envMap.dispose();
       renderer.dispose();
     };
-  }, [loadModel, activeSubItemId]);
+  }, [viewMode, loadModel, activeSubItemId]);
 
   // Handle switching category pilar
   const handleCategoryChange = (category: HardwareCategory) => {
     setActiveCategory(category);
     const firstSubItem = HARDWARE_CATEGORIES[category].items[0];
     setActiveSubItemId(firstSubItem.id);
-    loadModel(firstSubItem.id);
+    if (viewMode === '3d') {
+      loadModel(firstSubItem.id);
+    }
   };
 
   // Handle switching sub-item
   const handleSubItemChange = (subItemId: string) => {
     setActiveSubItemId(subItemId);
-    loadModel(subItemId);
+    if (viewMode === '3d') {
+      loadModel(subItemId);
+    }
   };
 
-  // Toggle Auto-Rotate: updates BOTH state (for UI button) and ref (for immediate animation loop reaction)
+  // Toggle Auto-Rotate: updates BOTH state and ref
   const handleToggleAutoRotate = () => {
     const nextVal = !autoRotate;
     setAutoRotate(nextVal);
@@ -207,7 +225,6 @@ export default function Hardware3DViewer() {
     const deltaX = e.clientX - previousPointerPosition.current.x;
     const deltaY = e.clientY - previousPointerPosition.current.y;
 
-    // Full 360° arbitrary rotation
     currentModelGroup.current.rotation.y += deltaX * 0.012;
     currentModelGroup.current.rotation.x += deltaY * 0.012;
 
@@ -240,25 +257,46 @@ export default function Hardware3DViewer() {
         <div>
           <div className="flex items-center gap-2">
             <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-blue-500/20 text-blue-400 border border-blue-500/30 font-mono">
-              LAB 3D INTERAKTIF 360° (15 PERANGKAT)
+              LAB 3D FOTOREALISTIK (PRODUK ASLI PERSIS)
             </span>
             <span className="text-xs text-amber-400 font-semibold flex items-center gap-1">
               <Sparkles className="w-3.5 h-3.5" />
-              Putar 360° Bebas!
+              Detail Tekstur Asli!
             </span>
           </div>
           <h3 className="text-xl md:text-2xl font-black mt-1 text-white">
             Eksplorasi 5 Pilar Hardware Komputer
           </h3>
           <p className="text-xs text-slate-300 mt-0.5">
-            Pilih pilar dan perangkat di bawah, lalu <strong>usap atau geser layar</strong> untuk memutar komponen 360 derajat!
+            Model 3D dilengkapi teks ukiran laser resmi, barcode, dan detail fisik persis seperti barang aslinya di toko/laboratorium.
           </p>
         </div>
 
-        {/* Quick Rotation Helper Badge */}
-        <div className="hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-800/80 border border-slate-700 text-xs text-slate-300">
-          <Hand className="w-4 h-4 text-blue-400 animate-pulse" />
-          <span>Usap layar / klik & geser mouse</span>
+        {/* Dual Mode Switcher: 3D 360° vs Real Photo */}
+        <div className="flex items-center p-1 rounded-2xl bg-slate-800/90 border border-slate-700 shrink-0">
+          <button
+            onClick={() => setViewMode('3d')}
+            className={`px-3 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 transition ${
+              viewMode === '3d'
+                ? 'bg-blue-600 text-white shadow-md shadow-blue-600/30'
+                : 'text-slate-400 hover:text-white'
+            }`}
+          >
+            <Box className="w-3.5 h-3.5" />
+            <span>Model 3D 360°</span>
+          </button>
+
+          <button
+            onClick={() => setViewMode('photo')}
+            className={`px-3 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 transition ${
+              viewMode === 'photo'
+                ? 'bg-emerald-600 text-white shadow-md shadow-emerald-600/30'
+                : 'text-slate-400 hover:text-white'
+            }`}
+          >
+            <Camera className="w-3.5 h-3.5" />
+            <span>Foto Produk Asli HD</span>
+          </button>
         </div>
       </div>
 
@@ -289,7 +327,7 @@ export default function Hardware3DViewer() {
                 {category.title.split(' ')[0]} {category.title.split(' ')[1]}
               </div>
               <div className="text-[10px] text-slate-400 mt-0.5">
-                3 Model 3D
+                3 Model Nyata
               </div>
             </button>
           );
@@ -300,7 +338,7 @@ export default function Hardware3DViewer() {
       <div className="p-3 rounded-2xl bg-slate-800/80 border border-slate-700/80 mb-4">
         <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
           <Layers className="w-3.5 h-3.5 text-blue-400" />
-          <span>Pilih Perangkat 3D ({categoryMeta.categoryName}):</span>
+          <span>Pilih Perangkat ({categoryMeta.categoryName}):</span>
         </div>
         
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
@@ -338,92 +376,157 @@ export default function Hardware3DViewer() {
         </div>
       </div>
 
-      {/* 3D WebGL Canvas Viewport */}
-      <div className="relative rounded-2xl bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 border border-slate-800 overflow-hidden shadow-inner">
-        
-        {/* Active Item Title & Badge Overlay */}
-        <div className="absolute top-3 left-3 z-10 pointer-events-none">
-          <div className="flex items-center gap-2">
-            <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold border backdrop-blur-md ${categoryMeta.tagColor}`}>
-              {categoryMeta.categoryName.split('.')[1]}
-            </span>
-            <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-800/80 text-slate-300 border border-slate-700 backdrop-blur-md">
-              {activeSubItem.badge}
-            </span>
+      {/* MAIN VIEWPORT: 3D WEBGL CANVAS OR REAL PHOTO HD */}
+      {viewMode === '3d' ? (
+        /* MODE 1: 3D WEBGL CANVAS VIEWPORT */
+        <div className="relative rounded-2xl bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 border border-slate-800 overflow-hidden shadow-inner">
+          
+          {/* Active Item Title & Real Product Badge Overlay */}
+          <div className="absolute top-3 left-3 z-10 pointer-events-none max-w-[65%]">
+            <div className="flex items-center gap-2 flex-wrap">
+              <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold border backdrop-blur-md ${categoryMeta.tagColor}`}>
+                {categoryMeta.categoryName.split('.')[1]}
+              </span>
+              <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-800/90 text-amber-300 border border-amber-500/30 backdrop-blur-md">
+                ⭐ Produk Asli: {activeSubItem.realProductName}
+              </span>
+            </div>
+            <h4 className="text-base md:text-xl font-black text-white mt-1 drop-shadow-md">
+              {activeSubItem.name}
+            </h4>
           </div>
-          <h4 className="text-lg md:text-xl font-black text-white mt-1 drop-shadow-md">
-            {activeSubItem.name}
-          </h4>
-        </div>
 
-        {/* Floating Action Controls on Top Right */}
-        <div className="absolute top-3 right-3 z-10 flex items-center gap-1.5 bg-slate-900/80 border border-slate-700/80 rounded-2xl p-1.5 backdrop-blur-md shadow-lg">
-          {/* Toggle Auto-Rotate with clear visual active/inactive state */}
-          <button
-            onClick={handleToggleAutoRotate}
-            className={`px-2.5 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition ${
-              autoRotate
-                ? 'bg-emerald-600 text-white shadow-md shadow-emerald-600/30'
-                : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
-            }`}
-            title={autoRotate ? 'Matikan Auto-Putar' : 'Nyalakan Auto-Putar'}
-          >
-            {autoRotate ? (
-              <>
-                <Pause className="w-3.5 h-3.5 text-white" />
-                <span className="hidden sm:inline">Auto Putar: Aktif</span>
-              </>
-            ) : (
-              <>
-                <Play className="w-3.5 h-3.5 text-slate-400" />
-                <span className="hidden sm:inline">Auto Putar: Mati</span>
-              </>
-            )}
-          </button>
+          {/* Floating Action Controls on Top Right */}
+          <div className="absolute top-3 right-3 z-10 flex items-center gap-1.5 bg-slate-900/80 border border-slate-700/80 rounded-2xl p-1.5 backdrop-blur-md shadow-lg">
+            <button
+              onClick={handleToggleAutoRotate}
+              className={`px-2.5 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition ${
+                autoRotate
+                  ? 'bg-emerald-600 text-white shadow-md shadow-emerald-600/30'
+                  : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
+              }`}
+              title={autoRotate ? 'Matikan Auto-Putar' : 'Nyalakan Auto-Putar'}
+            >
+              {autoRotate ? (
+                <>
+                  <Pause className="w-3.5 h-3.5 text-white" />
+                  <span className="hidden sm:inline">Auto Putar: Aktif</span>
+                </>
+              ) : (
+                <>
+                  <Play className="w-3.5 h-3.5 text-slate-400" />
+                  <span className="hidden sm:inline">Auto Putar: Mati</span>
+                </>
+              )}
+            </button>
 
-          <button
-            onClick={() => handleZoom('in')}
-            className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 transition"
-            title="Perbesar Model"
-          >
-            <ZoomIn className="w-3.5 h-3.5" />
-          </button>
+            <button
+              onClick={() => handleZoom('in')}
+              className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 transition"
+              title="Perbesar Model"
+            >
+              <ZoomIn className="w-3.5 h-3.5" />
+            </button>
 
-          <button
-            onClick={() => handleZoom('out')}
-            className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 transition"
-            title="Perkecil Model"
-          >
-            <ZoomOut className="w-3.5 h-3.5" />
-          </button>
+            <button
+              onClick={() => handleZoom('out')}
+              className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 transition"
+              title="Perkecil Model"
+            >
+              <ZoomOut className="w-3.5 h-3.5" />
+            </button>
 
-          <button
-            onClick={handleResetView}
-            className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 transition"
-            title="Kembalikan Sudut Pandang"
-          >
-            <RotateCcw className="w-3.5 h-3.5" />
-          </button>
-        </div>
+            <button
+              onClick={handleResetView}
+              className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 transition"
+              title="Kembalikan Sudut Pandang"
+            >
+              <RotateCcw className="w-3.5 h-3.5" />
+            </button>
+          </div>
 
-        {/* 3D WebGL Canvas Container */}
-        <div
-          ref={containerRef}
-          onPointerDown={handlePointerDown}
-          onPointerMove={handlePointerMove}
-          onPointerUp={handlePointerUp}
-          onPointerCancel={handlePointerUp}
-          className="w-full h-[360px] md:h-[420px] cursor-grab active:cursor-grabbing touch-none select-none"
-        />
+          {/* 3D WebGL Canvas Container */}
+          <div
+            ref={containerRef}
+            onPointerDown={handlePointerDown}
+            onPointerMove={handlePointerMove}
+            onPointerUp={handlePointerUp}
+            onPointerCancel={handlePointerUp}
+            className="w-full h-[380px] md:h-[440px] cursor-grab active:cursor-grabbing touch-none select-none"
+          />
 
-        {/* Bottom Touch Indicator Hint */}
-        <div className="absolute bottom-3 inset-x-0 flex items-center justify-center pointer-events-none">
-          <div className="px-3.5 py-1 rounded-full bg-slate-900/80 border border-slate-700/80 backdrop-blur-sm text-[11px] text-slate-300 flex items-center gap-1.5 shadow-md">
-            <Hand className="w-3.5 h-3.5 text-amber-400 animate-bounce" />
-            <span>Usap atau geser layar untuk memutar 360° ke segala arah!</span>
+          {/* Bottom Touch Indicator Hint */}
+          <div className="absolute bottom-3 inset-x-0 flex items-center justify-center pointer-events-none">
+            <div className="px-3.5 py-1 rounded-full bg-slate-900/80 border border-slate-700/80 backdrop-blur-sm text-[11px] text-slate-300 flex items-center gap-1.5 shadow-md">
+              <Hand className="w-3.5 h-3.5 text-amber-400 animate-bounce" />
+              <span>Usap layar sentuh atau geser mouse untuk memutar 360° ke segala arah!</span>
+            </div>
           </div>
         </div>
-      </div>
+      ) : (
+        /* MODE 2: FOTO PRODUK ASLI NYATA (STUDIO HD SHOWCASE) */
+        <div className="relative rounded-2xl bg-slate-950 border border-slate-800 overflow-hidden shadow-2xl p-5 md:p-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+            
+            {/* Foto Produk Asli Nyata */}
+            <div className="relative rounded-2xl overflow-hidden border-2 border-slate-700 shadow-2xl bg-slate-900 group">
+              <img
+                src={activeSubItem.photoUrl}
+                alt={activeSubItem.realProductName}
+                className="w-full h-[280px] md:h-[340px] object-cover transition-transform duration-500 group-hover:scale-105"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute bottom-3 left-3 right-3 text-left">
+                <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 inline-flex items-center gap-1">
+                  <ShieldCheck className="w-3 h-3" />
+                  Foto Fisik Produk Asli
+                </span>
+                <div className="text-sm md:text-base font-bold text-white mt-1">
+                  {activeSubItem.realProductName}
+                </div>
+              </div>
+            </div>
+
+            {/* Spesifikasi Teknis Produk Nyata */}
+            <div className="space-y-4">
+              <div>
+                <div className="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-1 flex items-center gap-1.5">
+                  <Zap className="w-3.5 h-3.5" />
+                  <span>Spesifikasi Komersial di Dunia Nyata:</span>
+                </div>
+                <h4 className="text-lg md:text-2xl font-black text-white">
+                  {activeSubItem.realProductName}
+                </h4>
+                <p className="text-xs text-slate-300 mt-1">
+                  Komponen ini digunakan di komputer laboratorium SMP Negeri 2 Lemahabang dan komputer modern saat ini.
+                </p>
+              </div>
+
+              {/* Rincian Spesifikasi Nyata */}
+              <div className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 space-y-2">
+                {activeSubItem.realSpecs.map((spec, sIdx) => (
+                  <div key={sIdx} className="text-xs text-slate-200 flex items-start gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0 mt-1.5" />
+                    <span>{spec}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="p-3 rounded-xl bg-blue-950/40 border border-blue-500/30 text-xs text-blue-200 flex items-center justify-between">
+                <span>Ingin melihat komponen ini dalam bentuk 3D interaktif?</span>
+                <button
+                  onClick={() => setViewMode('3d')}
+                  className="px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs shrink-0 transition"
+                >
+                  Buka Model 3D ➔
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      )}
 
       {/* Detailed Anatomical Callouts & Explanations under 3D model */}
       <div className="mt-5 grid grid-cols-1 lg:grid-cols-3 gap-4">
