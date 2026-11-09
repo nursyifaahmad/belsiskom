@@ -163,7 +163,6 @@ export default function SelesaiPage() {
             <div className="text-right">
               <div className="text-[10px] text-slate-500">Guru Mata Pelajaran:</div>
               <div className="font-bold text-white mt-0.5">Ahmad Nursyifa, S.Kom.</div>
-              <div className="text-[10px] text-slate-400">NIP. 19930411 202221 1 007</div>
             </div>
           </div>
         </div>

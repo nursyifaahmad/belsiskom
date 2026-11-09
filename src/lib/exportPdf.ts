@@ -150,8 +150,6 @@ export function generateReportPdf(
 
   doc.setFont('helvetica', 'bold');
   doc.text('Ahmad Nursyifa, S.Kom.', pageWidth - 70, finalY + 28);
-  doc.setFont('helvetica', 'normal');
-  doc.text('NIP. 19930411 202221 1 007', pageWidth - 70, finalY + 33);
 
   // Simpan/Unduh file
   doc.save(`BELSISKOM_Nilai_${targetClass.replace(/\s+/g, '_')}_${Date.now()}.pdf`);
