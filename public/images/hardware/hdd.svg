@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 450" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" width="100%" height="100%">
   <defs>
-    <linearGradient id="hddCasing" x1="0%" y1="0%" x2="0%" y2="100%">
+    <linearGradient id="hddCasing" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#475569" />
       <stop offset="50%" stop-color="#334155" />
       <stop offset="100%" stop-color="#1e293b" />
@@ -16,52 +16,64 @@
     </filter>
   </defs>
 
-  <rect width="500" height="450" rx="16" fill="#090d16" />
-  <circle cx="250" cy="225" r="180" fill="#16a34a" opacity="0.1" filter="blur(30px)" />
+  <!-- Dark Studio Background -->
+  <rect width="600" height="450" rx="16" fill="#090d16" />
+  <circle cx="300" cy="210" r="190" fill="#16a34a" opacity="0.1" filter="blur(30px)" />
 
-  <!-- Hard Drive 3.5" Outer Aluminum Cast Casing -->
-  <rect x="50" y="40" width="400" height="340" rx="14" fill="url(#hddCasing)" stroke="#64748b" stroke-width="4" filter="url(#hddShadow)" />
+  <g transform="translate(50, 0)">
+    <!-- Hard Drive 3.5" Outer Aluminum Cast Casing -->
+    <rect x="50" y="30" width="400" height="340" rx="14" fill="url(#hddCasing)" stroke="#64748b" stroke-width="4" filter="url(#hddShadow)" />
 
-  <!-- Side Mounting Holes -->
-  <circle cx="65" cy="80" r="5" fill="#0f172a" /><circle cx="65" cy="340" r="5" fill="#0f172a" />
-  <circle cx="435" cy="80" r="5" fill="#0f172a" /><circle cx="435" cy="340" r="5" fill="#0f172a" />
+    <!-- Side Mounting Holes -->
+    <circle cx="65" cy="70" r="5" fill="#0f172a" /><circle cx="65" cy="330" r="5" fill="#0f172a" />
+    <circle cx="435" cy="70" r="5" fill="#0f172a" /><circle cx="435" cy="330" r="5" fill="#0f172a" />
 
-  <!-- Cutaway Chamber (Inside View) -->
-  <rect x="75" y="65" width="350" height="290" rx="10" fill="#0f172a" stroke="#1e293b" stroke-width="2" />
+    <!-- Cutaway Chamber (Inside View) -->
+    <rect x="75" y="55" width="350" height="290" rx="10" fill="#0f172a" stroke="#1e293b" stroke-width="2" />
 
-  <!-- Platter (Piringan Cakram Cermin Magnetik) -->
-  <circle cx="210" cy="210" r="115" fill="url(#platterGleam)" stroke="#cbd5e1" stroke-width="2" filter="url(#hddShadow)" />
-  <!-- Radial Tracks on Platter -->
-  <circle cx="210" cy="210" r="95" stroke="#cbd5e1" stroke-width="0.8" fill="none" opacity="0.6" />
-  <circle cx="210" cy="210" r="75" stroke="#cbd5e1" stroke-width="0.8" fill="none" opacity="0.6" />
-  <circle cx="210" cy="210" r="55" stroke="#cbd5e1" stroke-width="0.8" fill="none" opacity="0.6" />
+    <!-- Platter (Piringan Cakram Cermin Magnetik) -->
+    <circle cx="210" cy="200" r="115" fill="url(#platterGleam)" stroke="#cbd5e1" stroke-width="2" filter="url(#hddShadow)" />
+    <!-- Radial Tracks on Platter -->
+    <circle cx="210" cy="200" r="95" stroke="#cbd5e1" stroke-width="0.8" fill="none" opacity="0.6" />
+    <circle cx="210" cy="200" r="75" stroke="#cbd5e1" stroke-width="0.8" fill="none" opacity="0.6" />
+    <circle cx="210" cy="200" r="55" stroke="#cbd5e1" stroke-width="0.8" fill="none" opacity="0.6" />
 
-  <!-- Spindle Motor Center Hub -->
-  <circle cx="210" cy="210" r="32" fill="#64748b" stroke="#94a3b8" stroke-width="2" />
-  <circle cx="210" cy="210" r="14" fill="#334155" />
-  <circle cx="202" cy="198" r="3" fill="#cbd5e1" /><circle cx="218" cy="198" r="3" fill="#cbd5e1" />
-  <circle cx="202" cy="222" r="3" fill="#cbd5e1" /><circle cx="218" cy="222" r="3" fill="#cbd5e1" />
+    <!-- Spindle Motor Center Hub -->
+    <circle cx="210" cy="200" r="32" fill="#64748b" stroke="#94a3b8" stroke-width="2" />
+    <circle cx="210" cy="200" r="14" fill="#334155" />
+    <circle cx="202" cy="188" r="3" fill="#cbd5e1" /><circle cx="218" cy="188" r="3" fill="#cbd5e1" />
+    <circle cx="202" cy="212" r="3" fill="#cbd5e1" /><circle cx="218" cy="212" r="3" fill="#cbd5e1" />
 
-  <!-- Actuator Arm Pivot & Neodymium Magnet Housing -->
-  <rect x="330" y="90" width="70" height="75" rx="8" fill="#475569" stroke="#94a3b8" stroke-width="2" />
-  <circle cx="365" cy="125" r="22" fill="#64748b" stroke="#cbd5e1" stroke-width="2" />
-  <circle cx="365" cy="125" r="8" fill="#1e293b" />
+    <!-- Actuator Arm Pivot & Neodymium Magnet Housing -->
+    <rect x="330" y="80" width="70" height="75" rx="8" fill="#475569" stroke="#94a3b8" stroke-width="2" />
+    <circle cx="365" cy="115" r="22" fill="#64748b" stroke="#cbd5e1" stroke-width="2" />
+    <circle cx="365" cy="115" r="8" fill="#1e293b" />
 
-  <!-- Actuator Arm Head -->
-  <polygon points="365,120 230,165 220,175 360,135" fill="#cbd5e1" stroke="#94a3b8" stroke-width="1.5" />
-  <!-- Slider & Read/Write Micro Head Tip -->
-  <rect x="215" y="170" width="14" height="6" fill="#ef4444" rx="1" />
+    <!-- Actuator Arm Head -->
+    <polygon points="365,110 230,155 220,165 360,125" fill="#cbd5e1" stroke="#94a3b8" stroke-width="1.5" />
+    <!-- Slider & Read/Write Micro Head Tip -->
+    <rect x="215" y="160" width="14" height="6" fill="#ef4444" rx="1" />
 
-  <!-- Seagate BarraCuda Product Label at Bottom -->
-  <rect x="75" y="275" width="350" height="80" rx="4" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2" />
-  <rect x="75" y="275" width="350" height="18" fill="#16a34a" />
-  <text x="90" y="289" font-family="Arial, sans-serif" font-weight="bold" font-size="12" fill="#ffffff">SEAGATE BarraCuda®</text>
-  <text x="390" y="289" font-family="'Consolas', monospace" font-weight="bold" font-size="12" fill="#ffffff">2 TB</text>
+    <!-- Seagate BarraCuda Product Label at Bottom -->
+    <rect x="75" y="265" width="350" height="80" rx="4" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2" />
+    <rect x="75" y="265" width="350" height="18" fill="#16a34a" />
+    <text x="90" y="279" font-family="Arial, sans-serif" font-weight="bold" font-size="12" fill="#ffffff">SEAGATE BarraCuda®</text>
+    <text x="390" y="279" font-family="'Consolas', monospace" font-weight="bold" font-size="12" fill="#ffffff">2 TB</text>
 
-  <text x="90" y="315" font-family="'Consolas', monospace" font-weight="bold" font-size="14" fill="#0f172a">ST2000DM008 • 7200 RPM • 256MB CACHE</text>
-  <text x="90" y="335" font-family="'Consolas', monospace" font-size="11" fill="#475569">SATA 6Gb/s • 3.5" DESKTOP HARD DRIVE</text>
+    <text x="90" y="305" font-family="'Consolas', monospace" font-weight="bold" font-size="14" fill="#0f172a">ST2000DM008 • 7200 RPM • 256MB CACHE</text>
+    <text x="90" y="325" font-family="'Consolas', monospace" font-size="11" fill="#475569">SATA 6Gb/s • 3.5" DESKTOP HARD DRIVE</text>
+  </g>
 
-  <!-- Badge at Bottom -->
-  <rect x="75" y="400" width="350" height="30" rx="15" fill="#0f172a" stroke="#16a34a" stroke-width="1.5" />
-  <text x="250" y="420" font-family="'Segoe UI', Arial, sans-serif" font-weight="bold" font-size="13" fill="#4ade80" text-anchor="middle">💿 SEAGATE BARRACUDA® 2TB DESKTOP HDD</text>
+  <!-- Clear Badge Overlay in Visual -->
+  <g transform="translate(30, 395)">
+    <rect width="250" height="30" rx="15" fill="#10b981" opacity="0.2" stroke="#34d399" stroke-width="1.5" />
+    <circle cx="16" cy="15" r="5" fill="#34d399" />
+    <text x="30" y="20" font-family="Arial, sans-serif" font-weight="bold" font-size="12" fill="#d1fae5">HARDDISK 3.5" (STORAGE)</text>
+  </g>
+
+  <!-- Spec Badge at Bottom Right -->
+  <g transform="translate(435, 395)">
+    <rect width="135" height="30" rx="15" fill="#1e293b" stroke="#475569" stroke-width="1.5" />
+    <text x="67" y="20" font-family="'Consolas', monospace" font-weight="bold" font-size="11" fill="#94a3b8" text-anchor="middle">2TB 7200 RPM</text>
+  </g>
 </svg>

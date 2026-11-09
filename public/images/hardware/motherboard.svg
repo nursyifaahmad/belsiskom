@@ -1,110 +1,133 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" width="100%" height="100%">
   <defs>
+    <!-- Dark PCB Gradient -->
     <linearGradient id="moboPcb" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#0f172a" />
       <stop offset="50%" stop-color="#091e3a" />
       <stop offset="100%" stop-color="#020617" />
     </linearGradient>
+
+    <!-- Metal Heatsink Armor Gradient -->
     <linearGradient id="tufHeatsink" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#475569" />
+      <stop offset="0%" stop-color="#64748b" />
       <stop offset="50%" stop-color="#334155" />
       <stop offset="100%" stop-color="#1e293b" />
     </linearGradient>
+
+    <!-- Gold Accent Line -->
     <linearGradient id="tufGold" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#eab308" />
+      <stop offset="0%" stop-color="#facc15" />
       <stop offset="100%" stop-color="#ca8a04" />
     </linearGradient>
+
+    <!-- Drop Shadow Filter -->
     <filter id="moboShadow" x="-5%" y="-5%" width="110%" height="110%">
-      <feDropShadow dx="0" dy="10" stdDeviation="8" flood-color="#000" flood-opacity="0.5" />
+      <feDropShadow dx="0" dy="12" stdDeviation="10" flood-color="#000" flood-opacity="0.6" />
     </filter>
   </defs>
 
   <!-- Dark Studio Background -->
   <rect width="600" height="450" rx="16" fill="#090d16" />
-  <circle cx="300" cy="225" r="210" fill="#1e3a8a" opacity="0.12" filter="blur(35px)" />
+  <circle cx="300" cy="200" r="210" fill="#1e3a8a" opacity="0.14" filter="blur(35px)" />
 
-  <!-- Motherboard ATX PCB (Centered) -->
+  <!-- Full ATX Motherboard Board (Centered & Entire Board Visible) -->
   <g filter="url(#moboShadow)">
-    <rect x="110" y="25" width="380" height="395" rx="12" fill="url(#moboPcb)" stroke="#1e3a8a" stroke-width="3" />
+    <rect x="120" y="20" width="360" height="360" rx="12" fill="url(#moboPcb)" stroke="#1e3a8a" stroke-width="2.5" />
 
-    <!-- Mounting Screw Holes -->
-    <circle cx="125" cy="40" r="6" fill="#1e293b" stroke="#cbd5e1" stroke-width="1.5" />
-    <circle cx="475" cy="40" r="6" fill="#1e293b" stroke="#cbd5e1" stroke-width="1.5" />
-    <circle cx="125" cy="405" r="6" fill="#1e293b" stroke="#cbd5e1" stroke-width="1.5" />
-    <circle cx="475" cy="405" r="6" fill="#1e293b" stroke="#cbd5e1" stroke-width="1.5" />
+    <!-- Corner Mounting Screw Holes -->
+    <circle cx="135" cy="35" r="5" fill="#1e293b" stroke="#cbd5e1" stroke-width="1.5" />
+    <circle cx="465" cy="35" r="5" fill="#1e293b" stroke="#cbd5e1" stroke-width="1.5" />
+    <circle cx="135" cy="365" r="5" fill="#1e293b" stroke="#cbd5e1" stroke-width="1.5" />
+    <circle cx="465" cy="365" r="5" fill="#1e293b" stroke="#cbd5e1" stroke-width="1.5" />
 
-    <!-- TUF GAMING VRM Heavy Heatsink (Top & Left of CPU) -->
-    <!-- Top Heatsink -->
-    <rect x="195" y="35" width="140" height="35" rx="4" fill="url(#tufHeatsink)" stroke="#64748b" stroke-width="1.5" />
-    <rect x="200" y="38" width="130" height="4" fill="url(#tufGold)" />
-    <!-- Left VRM Heatsink & Rear I/O Cover -->
-    <rect x="118" y="70" width="48" height="150" rx="4" fill="url(#tufHeatsink)" stroke="#64748b" stroke-width="1.5" />
-    <text x="142" y="160" font-family="Arial, sans-serif" font-weight="900" font-size="11" fill="#e2e8f0" transform="rotate(-90 142 160)" letter-spacing="2">TUF GAMING</text>
-    <rect x="122" y="75" width="4" height="135" fill="url(#tufGold)" />
+    <!-- TUF GAMING VRM Heavy Heatsink (Top & Left of CPU Socket) -->
+    <!-- Top VRM Heatsink -->
+    <rect x="195" y="30" width="130" height="30" rx="4" fill="url(#tufHeatsink)" stroke="#64748b" stroke-width="1.5" />
+    <rect x="200" y="33" width="120" height="3" fill="url(#tufGold)" />
 
-    <!-- Rear I/O Ports Block (USB, HDMI, LAN, Audio) -->
-    <rect x="112" y="80" width="8" height="130" fill="#94a3b8" />
+    <!-- Left VRM Heatsink & Integrated I/O Cover Shield -->
+    <rect x="128" y="62" width="44" height="135" rx="4" fill="url(#tufHeatsink)" stroke="#64748b" stroke-width="1.5" />
+    <text x="150" y="145" font-family="Arial, sans-serif" font-weight="900" font-size="10" fill="#e2e8f0" transform="rotate(-90 150 145)" letter-spacing="2">TUF GAMING</text>
+    <rect x="132" y="66" width="3" height="120" fill="url(#tufGold)" />
 
-    <!-- CPU Socket (LGA1700) -->
-    <rect x="190" y="80" width="115" height="125" rx="6" fill="#e2e8f0" stroke="#64748b" stroke-width="2.5" />
-    <rect x="202" y="92" width="90" height="100" rx="4" fill="#cbd5e1" stroke="#94a3b8" stroke-width="1.5" />
-    <!-- Pin Bed (Gold/Amber) -->
-    <rect x="210" y="100" width="74" height="84" rx="2" fill="#ca8a04" opacity="0.6" />
-    <!-- CPU Socket Metal Locking Lever -->
-    <line x1="310" y1="78" x2="310" y2="208" stroke="#94a3b8" stroke-width="5" stroke-linecap="round" />
-    <circle cx="310" cy="208" r="4" fill="#64748b" />
+    <!-- Rear I/O Ports Plate (Colokan USB, LAN, Audio Belakang) -->
+    <rect x="122" y="70" width="6" height="115" fill="#94a3b8" />
 
-    <!-- 4x DDR RAM Slots (Dual-Channel Black & Grey) -->
+    <!-- 1. CPU Processor Socket (LGA1700 Metal Housing) -->
+    <rect x="195" y="70" width="105" height="112" rx="6" fill="#e2e8f0" stroke="#64748b" stroke-width="2" />
+    <rect x="206" y="80" width="83" height="90" rx="4" fill="#cbd5e1" stroke="#94a3b8" stroke-width="1.5" />
+    <!-- Pin Bed (1700 Gold Pins Bed) -->
+    <rect x="213" y="87" width="69" height="76" rx="2" fill="#ca8a04" opacity="0.65" />
+    <!-- Socket Metal Locking Lever (Tuas Pengunci CPU Logam) -->
+    <line x1="305" y1="68" x2="305" y2="185" stroke="#94a3b8" stroke-width="5" stroke-linecap="round" />
+    <circle cx="305" cy="185" r="4" fill="#64748b" />
+    <text x="247" y="130" font-family="'Consolas', monospace" font-weight="bold" font-size="9" fill="#0f172a" text-anchor="middle">LGA1700</text>
+
+    <!-- 2. Four (4x) DDR5 Memory Slots (Dual-Channel) -->
     <!-- Slot 1 -->
-    <rect x="330" y="65" width="10" height="155" rx="2" fill="#1e293b" stroke="#3b82f6" stroke-width="1" />
-    <rect x="333" y="75" width="4" height="135" fill="#facc15" />
+    <rect x="325" y="58" width="9" height="135" rx="2" fill="#1e293b" stroke="#3b82f6" stroke-width="1" />
+    <rect x="328" y="66" width="3" height="118" fill="#facc15" />
     <!-- Slot 2 -->
-    <rect x="345" y="65" width="10" height="155" rx="2" fill="#334155" stroke="#3b82f6" stroke-width="1" />
-    <rect x="348" y="75" width="4" height="135" fill="#facc15" />
+    <rect x="338" y="58" width="9" height="135" rx="2" fill="#334155" stroke="#3b82f6" stroke-width="1" />
+    <rect x="341" y="66" width="3" height="118" fill="#facc15" />
     <!-- Slot 3 -->
-    <rect x="360" y="65" width="10" height="155" rx="2" fill="#1e293b" stroke="#3b82f6" stroke-width="1" />
-    <rect x="363" y="75" width="4" height="135" fill="#facc15" />
+    <rect x="351" y="58" width="9" height="135" rx="2" fill="#1e293b" stroke="#3b82f6" stroke-width="1" />
+    <rect x="354" y="66" width="3" height="118" fill="#facc15" />
     <!-- Slot 4 -->
-    <rect x="375" y="65" width="10" height="155" rx="2" fill="#334155" stroke="#3b82f6" stroke-width="1" />
-    <rect x="378" y="75" width="4" height="135" fill="#facc15" />
-    <text x="355" y="55" font-family="'Consolas', monospace" font-size="9" fill="#94a3b8" text-anchor="middle">DDR5 SLOTS</text>
+    <rect x="364" y="58" width="9" height="135" rx="2" fill="#334155" stroke="#3b82f6" stroke-width="1" />
+    <rect x="367" y="66" width="3" height="118" fill="#facc15" />
+    <text x="348" y="50" font-family="'Consolas', monospace" font-size="8" font-weight="bold" fill="#38bdf8" text-anchor="middle">4x DDR5 RAM</text>
 
     <!-- 24-Pin ATX Main Power Connector -->
-    <rect x="445" y="100" width="30" height="85" rx="3" fill="#0f172a" stroke="#475569" stroke-width="1.5" />
+    <rect x="435" y="85" width="26" height="75" rx="2" fill="#0f172a" stroke="#475569" stroke-width="1.5" />
     <g fill="#facc15">
-      <rect x="448" y="105" width="10" height="75" rx="1" />
-      <rect x="462" y="105" width="10" height="75" rx="1" />
+      <rect x="438" y="90" width="8" height="65" rx="1" />
+      <rect x="450" y="90" width="8" height="65" rx="1" />
     </g>
 
-    <!-- PCIe 5.0 x16 Primary GPU SafeSlot (Reinforced Metal Shield) -->
-    <rect x="145" y="240" width="220" height="18" rx="3" fill="#cbd5e1" stroke="#94a3b8" stroke-width="2" />
-    <rect x="155" y="244" width="200" height="10" fill="#020617" />
+    <!-- 3. PCIe 5.0 x16 Primary GPU SafeSlot (Logam Pelindung Kartu Grafis) -->
+    <rect x="150" y="215" width="205" height="16" rx="2.5" fill="#cbd5e1" stroke="#94a3b8" stroke-width="2" />
+    <rect x="160" y="219" width="185" height="8" fill="#020617" />
     <!-- PCIe Retention Latch Clip -->
-    <rect x="365" y="237" width="15" height="24" rx="2" fill="#64748b" />
-    <text x="250" y="233" font-family="'Consolas', monospace" font-size="9" font-weight="bold" fill="#38bdf8" text-anchor="middle">PCIe 5.0 x16 GRAPHICS SLOT</text>
+    <rect x="355" y="212" width="14" height="22" rx="2" fill="#64748b" />
+    <text x="250" y="210" font-family="'Consolas', monospace" font-size="8.5" font-weight="bold" fill="#38bdf8" text-anchor="middle">SLOT KARTU GRAFIS (PCIe 5.0 x16)</text>
 
-    <!-- M.2 NVMe Storage Armor Heatsink -->
-    <rect x="145" y="270" width="180" height="30" rx="3" fill="url(#tufHeatsink)" stroke="#64748b" stroke-width="1.5" />
-    <text x="235" y="289" font-family="'Consolas', monospace" font-size="10" font-weight="bold" fill="#cbd5e1" text-anchor="middle">M.2 NVMe PCIe 4.0 HEATSINK</text>
+    <!-- 4. M.2 NVMe Storage Armor Heatsink -->
+    <rect x="150" y="242" width="165" height="26" rx="3" fill="url(#tufHeatsink)" stroke="#64748b" stroke-width="1.5" />
+    <text x="232" y="259" font-family="'Consolas', monospace" font-size="9" font-weight="bold" fill="#cbd5e1" text-anchor="middle">M.2 NVMe HEATSINK</text>
 
-    <!-- Secondary PCIe x16 & x1 Slots -->
-    <rect x="145" y="320" width="220" height="14" rx="2" fill="#1e293b" stroke="#334155" stroke-width="1" />
-    <rect x="145" y="350" width="100" height="12" rx="2" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <!-- Secondary PCIe Slots -->
+    <rect x="150" y="285" width="205" height="13" rx="2" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <rect x="150" y="312" width="95" height="11" rx="2" fill="#1e293b" stroke="#334155" stroke-width="1" />
 
-    <!-- Chipset B760 Heatsink (Bottom Right) -->
-    <rect x="360" y="280" width="110" height="85" rx="6" fill="url(#tufHeatsink)" stroke="#64748b" stroke-width="2" />
-    <rect x="370" y="290" width="90" height="65" fill="#0f172a" />
-    <text x="415" y="322" font-family="Arial, sans-serif" font-weight="900" font-size="14" fill="#facc15" text-anchor="middle">INTEL B760</text>
-    <text x="415" y="338" font-family="'Consolas', monospace" font-size="9" fill="#94a3b8" text-anchor="middle">CHIPSET</text>
+    <!-- 5. Intel B760 Chipset Heatsink (Sisi Kanan Bawah) -->
+    <rect x="355" y="250" width="105" height="75" rx="5" fill="url(#tufHeatsink)" stroke="#64748b" stroke-width="1.5" />
+    <rect x="365" y="260" width="85" height="55" fill="#0f172a" />
+    <text x="407" y="287" font-family="Arial, sans-serif" font-weight="900" font-size="12" fill="#facc15" text-anchor="middle">INTEL B760</text>
+    <text x="407" y="302" font-family="'Consolas', monospace" font-size="8" fill="#94a3b8" text-anchor="middle">CHIPSET</text>
 
-    <!-- 4x SATA 6Gb/s Ports -->
+    <!-- 4x SATA Ports (Colokan Harddisk/SSD Kabel) -->
     <g fill="#020617" stroke="#475569" stroke-width="1">
-      <rect x="450" y="375" width="22" height="12" rx="1" />
-      <rect x="450" y="392" width="22" height="12" rx="1" />
+      <rect x="440" y="335" width="20" height="10" rx="1" />
+      <rect x="440" y="350" width="20" height="10" rx="1" />
     </g>
+    <text x="415" y="348" font-family="'Consolas', monospace" font-size="7" fill="#64748b">SATA</text>
 
-    <!-- Audio Chipset Isolated Circuit Path (Bottom Left) -->
-    <circle cx="140" cy="380" r="14" fill="#1e293b" stroke="#facc15" stroke-width="1.5" />
-    <text x="140" y="384" font-family="'Consolas', monospace" font-size="8" fill="#facc15" text-anchor="middle">AUDIO</text>
+    <!-- Audio Chipset (Isolated Circuit Yellow Line) -->
+    <circle cx="145" cy="345" r="12" fill="#1e293b" stroke="#facc15" stroke-width="1.5" />
+    <text x="145" y="348" font-family="'Consolas', monospace" font-size="7" fill="#facc15" text-anchor="middle">AUDIO</text>
+  </g>
+
+  <!-- Clear Badge Overlay in Visual -->
+  <g transform="translate(30, 395)">
+    <rect width="260" height="30" rx="15" fill="#3b82f6" opacity="0.2" stroke="#60a5fa" stroke-width="1.5" />
+    <circle cx="16" cy="15" r="5" fill="#60a5fa" />
+    <text x="30" y="20" font-family="Arial, sans-serif" font-weight="bold" font-size="12" fill="#dbeafe">PAPAN INDUK (MOTHERBOARD)</text>
+  </g>
+
+  <!-- ATX Form Factor Badge at Bottom Right -->
+  <g transform="translate(435, 395)">
+    <rect width="135" height="30" rx="15" fill="#1e293b" stroke="#475569" stroke-width="1.5" />
+    <text x="67" y="20" font-family="'Consolas', monospace" font-weight="bold" font-size="11" fill="#94a3b8" text-anchor="middle">ATX FORM FACTOR</text>
   </g>
 </svg>
