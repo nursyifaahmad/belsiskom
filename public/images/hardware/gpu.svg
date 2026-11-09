@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="100%" height="100%">
+  <defs>
+    <linearGradient id="gpuShroud" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#334155" />
+      <stop offset="50%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <filter id="gpuShadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="10" stdDeviation="8" flood-color="#000" flood-opacity="0.5" />
+    </filter>
+  </defs>
+
+  <rect width="600" height="400" rx="16" fill="#090d16" />
+  <circle cx="300" cy="200" r="180" fill="#2563eb" opacity="0.1" filter="blur(30px)" />
+
+  <!-- Rear Metal Bracket at Left -->
+  <rect x="40" y="80" width="16" height="230" fill="#cbd5e1" stroke="#64748b" stroke-width="2" />
+  <rect x="42" y="120" width="12" height="24" rx="2" fill="#0f172a" />
+  <rect x="42" y="160" width="12" height="24" rx="2" fill="#0f172a" />
+  <rect x="42" y="200" width="12" height="24" rx="2" fill="#0f172a" />
+  <text x="48" y="270" font-family="'Consolas', monospace" font-size="10" fill="#475569" transform="rotate(-90 48 270)">HDMI / DP</text>
+
+  <!-- Black Long PCB Backplate -->
+  <rect x="56" y="90" width="490" height="200" rx="8" fill="#0f172a" stroke="#1e293b" stroke-width="2" filter="url(#gpuShadow)" />
+
+  <!-- Aluminum Heatsink Fins (Exposed Sides) -->
+  <g fill="#94a3b8">
+    <rect x="70" y="75" width="460" height="18" rx="2" />
+    <rect x="70" y="287" width="460" height="18" rx="2" />
+  </g>
+
+  <!-- Copper Heatpipes Glint -->
+  <g stroke="#d97706" stroke-width="6" fill="none" stroke-linecap="round">
+    <line x1="120" y1="84" x2="480" y2="84" />
+    <line x1="140" y1="296" x2="460" y2="296" />
+  </g>
+
+  <!-- Main Shroud Body (ASUS Dual Style) -->
+  <rect x="65" y="95" width="470" height="190" rx="12" fill="url(#gpuShroud)" stroke="#475569" stroke-width="2" />
+
+  <!-- Gold PCIe x16 Bus Pins at Bottom -->
+  <rect x="120" y="295" width="260" height="25" rx="2" fill="#facc15" stroke="#ca8a04" stroke-width="1.5" />
+  <!-- PCIe Notch -->
+  <rect x="160" y="295" width="12" height="25" fill="#090d16" />
+  <!-- PCIe Lock Tail -->
+  <polygon points="380,295 400,295 390,320 380,320" fill="#cbd5e1" />
+
+  <!-- Dual Axial-tech Cooling Fans -->
+  <!-- Fan 1 (Left) -->
+  <circle cx="200" cy="190" r="75" fill="#020617" stroke="#334155" stroke-width="3" />
+  <circle cx="200" cy="190" r="28" fill="#2563eb" stroke="#1d4ed8" stroke-width="2" />
+  <text x="200" y="195" font-family="Arial, sans-serif" font-weight="900" font-size="12" fill="#ffffff" text-anchor="middle">ASUS</text>
+  <!-- Fan 1 Curved Blades -->
+  <g stroke="#334155" stroke-width="5" fill="none">
+    <path d="M 200,162 Q 220,130 200,118" />
+    <path d="M 226,177 Q 260,180 270,165" />
+    <path d="M 220,208 Q 235,245 220,258" />
+    <path d="M 188,216 Q 165,245 150,235" />
+    <path d="M 174,185 Q 140,180 132,195" />
+    <path d="M 182,166 Q 165,135 178,122" />
+  </g>
+
+  <!-- Fan 2 (Right) -->
+  <circle cx="400" cy="190" r="75" fill="#020617" stroke="#334155" stroke-width="3" />
+  <circle cx="400" cy="190" r="28" fill="#2563eb" stroke="#1d4ed8" stroke-width="2" />
+  <text x="400" y="195" font-family="Arial, sans-serif" font-weight="900" font-size="12" fill="#ffffff" text-anchor="middle">GEFORCE</text>
+  <!-- Fan 2 Curved Blades -->
+  <g stroke="#334155" stroke-width="5" fill="none">
+    <path d="M 400,162 Q 420,130 400,118" />
+    <path d="M 426,177 Q 460,180 470,165" />
+    <path d="M 420,208 Q 435,245 420,258" />
+    <path d="M 388,216 Q 365,245 350,235" />
+    <path d="M 374,185 Q 340,180 332,195" />
+    <path d="M 382,166 Q 365,135 378,122" />
+  </g>
+
+  <!-- Model Title Badge at Bottom -->
+  <rect x="120" y="345" width="360" height="30" rx="15" fill="#0f172a" stroke="#0284c7" stroke-width="1.5" />
+  <text x="300" y="365" font-family="'Segoe UI', Arial, sans-serif" font-weight="bold" font-size="13" fill="#38bdf8" text-anchor="middle">🎮 ASUS DUAL GEFORCE RTX™ 4060 OC 8GB</text>
+</svg>

@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 400" width="100%" height="100%">
+  <defs>
+    <linearGradient id="nicPcb" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#15803d" />
+      <stop offset="100%" stop-color="#14532d" />
+    </linearGradient>
+    <filter id="nicShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="6" flood-color="#000" flood-opacity="0.5" />
+    </filter>
+  </defs>
+
+  <rect width="500" height="400" rx="16" fill="#090d16" />
+  <circle cx="250" cy="200" r="160" fill="#06b6d4" opacity="0.1" filter="blur(30px)" />
+
+  <!-- Silver Metal Chassis Bracket at Left -->
+  <rect x="40" y="50" width="18" height="280" fill="#cbd5e1" stroke="#64748b" stroke-width="2" />
+  <rect x="38" y="295" width="22" height="40" rx="2" fill="#94a3b8" />
+  <circle cx="49" cy="70" r="5" fill="#0f172a" />
+
+  <!-- Green PCB Body -->
+  <rect x="58" y="90" width="380" height="200" rx="8" fill="url(#nicPcb)" stroke="#166534" stroke-width="2" filter="url(#nicShadow)" />
+
+  <!-- Gold PCIe x1 Bus Edge Pins at Bottom -->
+  <rect x="110" y="290" width="130" height="24" rx="2" fill="#facc15" stroke="#ca8a04" stroke-width="1.5" />
+  <rect x="140" y="290" width="10" height="24" fill="#090d16" />
+
+  <!-- Shielded Metal RJ-45 Ethernet Jack -->
+  <rect x="45" y="145" width="80" height="80" rx="6" fill="#cbd5e1" stroke="#475569" stroke-width="2" />
+  <!-- RJ-45 Port Socket Hole -->
+  <rect x="42" y="160" width="40" height="50" rx="3" fill="#0f172a" />
+  <!-- 8 Gold Contact Pins inside RJ-45 socket -->
+  <g stroke="#facc15" stroke-width="2">
+    <line x1="50" y1="168" x2="65" y2="168" /><line x1="50" y1="173" x2="65" y2="173" />
+    <line x1="50" y1="178" x2="65" y2="178" /><line x1="50" y1="183" x2="65" y2="183" />
+    <line x1="50" y1="188" x2="65" y2="188" /><line x1="50" y1="193" x2="65" y2="193" />
+    <line x1="50" y1="198" x2="65" y2="198" /><line x1="50" y1="203" x2="65" y2="203" />
+  </g>
+
+  <!-- RJ-45 Link Status LEDs (Green Link & Amber Activity) -->
+  <circle cx="95" cy="155" r="4" fill="#22c55e" />
+  <circle cx="110" cy="155" r="4" fill="#f59e0b" />
+
+  <!-- Realtek Gigabit Ethernet Controller Chip -->
+  <rect x="170" y="145" width="70" height="70" rx="4" fill="#0f172a" stroke="#1e293b" stroke-width="2" />
+  <text x="205" y="175" font-family="'Consolas', monospace" font-size="9" fill="#38bdf8" text-anchor="middle">REALTEK</text>
+  <text x="205" y="190" font-family="'Consolas', monospace" font-size="8" fill="#94a3b8" text-anchor="middle">RTL8111H</text>
+
+  <!-- LAN Pulse Transformer Magnetics Block -->
+  <rect x="135" y="150" width="25" height="50" rx="3" fill="#18181b" stroke="#334155" stroke-width="1.5" />
+
+  <!-- MAC Address Barcode Sticker -->
+  <rect x="260" y="130" width="160" height="70" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+  <text x="270" y="150" font-family="'Consolas', monospace" font-weight="bold" font-size="11" fill="#0f172a">MAC: E4-54-E8-1A-9C-42</text>
+  <text x="270" y="165" font-family="'Consolas', monospace" font-size="9" fill="#475569">GIGABIT PCI-E NIC 1000M</text>
+  <!-- Barcode Lines -->
+  <g fill="#0f172a">
+    <rect x="270" y="172" width="2" height="20" /><rect x="274" y="172" width="4" height="20" />
+    <rect x="280" y="172" width="3" height="20" /><rect x="285" y="172" width="5" height="20" />
+    <rect x="292" y="172" width="2" height="20" /><rect x="296" y="172" width="4" height="20" />
+    <rect x="302" y="172" width="6" height="20" /><rect x="310" y="172" width="2" height="20" />
+    <rect x="314" y="172" width="5" height="20" /><rect x="321" y="172" width="3" height="20" />
+    <rect x="326" y="172" width="4" height="20" /><rect x="332" y="172" width="2" height="20" />
+    <rect x="336" y="172" width="5" height="20" /><rect x="343" y="172" width="3" height="20" />
+    <rect x="348" y="172" width="4" height="20" /><rect x="354" y="172" width="2" height="20" />
+    <rect x="358" y="172" width="5" height="20" /><rect x="365" y="172" width="3" height="20" />
+    <rect x="370" y="172" width="4" height="20" /><rect x="376" y="172" width="2" height="20" />
+  </g>
+
+  <!-- Solid Capacitors and Inductors -->
+  <g fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <circle cx="160" cy="120" r="7" /><circle cx="210" cy="120" r="7" />
+    <circle cx="260" cy="235" r="7" /><circle cx="310" cy="235" r="7" />
+  </g>
+
+  <!-- Badge at Bottom -->
+  <rect x="80" y="345" width="340" height="30" rx="15" fill="#0f172a" stroke="#06b6d4" stroke-width="1.5" />
+  <text x="250" y="365" font-family="'Segoe UI', Arial, sans-serif" font-weight="bold" font-size="12" fill="#22d3ee" text-anchor="middle">🔌 TP-LINK TG-3468 GIGABIT PCIE LAN CARD</text>
+</svg>

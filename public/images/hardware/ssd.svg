@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="ssdBg" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="50%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#090d16" />
+    </linearGradient>
+    <filter id="ssdShadow" x="-5%" y="-5%" width="110%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="6" flood-color="#000" flood-opacity="0.4" />
+    </filter>
+  </defs>
+
+  <rect width="600" height="300" rx="16" fill="#090d16" />
+  <circle cx="300" cy="150" r="140" fill="#0284c7" opacity="0.1" filter="blur(30px)" />
+
+  <!-- PCB Stick M.2 2280 Base -->
+  <g filter="url(#ssdShadow)">
+    <rect x="50" y="80" width="500" height="135" rx="6" fill="url(#ssdBg)" stroke="#334155" stroke-width="2" />
+  </g>
+
+  <!-- Gold M.2 Connector Pins at Left -->
+  <rect x="35" y="90" width="22" height="115" rx="2" fill="#facc15" stroke="#ca8a04" stroke-width="1.5" />
+  <!-- M.2 Key Notch -->
+  <rect x="35" y="115" width="22" height="15" fill="#090d16" />
+
+  <!-- Mounting Screw Notch at Right -->
+  <circle cx="550" cy="147" r="12" fill="#090d16" stroke="#334155" stroke-width="2" />
+
+  <!-- Elpida / Phoenix Nickel-Coated Controller Chip -->
+  <rect x="80" y="100" width="70" height="70" rx="4" fill="#cbd5e1" stroke="#94a3b8" stroke-width="2" />
+  <text x="115" y="140" font-family="'Consolas', monospace" font-size="9" fill="#1e293b" text-anchor="middle">CONTROLLER</text>
+
+  <!-- Samsung 980 PRO Thermal Label Sticker -->
+  <rect x="165" y="90" width="365" height="115" rx="4" fill="#0f172a" stroke="#475569" stroke-width="1.5" />
+
+  <!-- Copper Thermal Stripe -->
+  <rect x="165" y="90" width="365" height="8" fill="#ea580c" />
+
+  <text x="180" y="125" font-family="Arial, sans-serif" font-weight="900" font-size="24" fill="#ffffff">SAMSUNG</text>
+  <text x="310" y="125" font-family="Arial, sans-serif" font-weight="bold" font-size="20" fill="#ef4444">980 PRO</text>
+  <text x="430" y="125" font-family="'Consolas', monospace" font-weight="bold" font-size="14" fill="#cbd5e1">NVMe™ M.2</text>
+
+  <text x="180" y="152" font-family="'Consolas', monospace" font-size="12" fill="#94a3b8">PCIe® 4.0 SSD • 1TB • READ UP TO 7,000 MB/s</text>
+  <text x="180" y="172" font-family="'Consolas', monospace" font-size="10" fill="#64748b">S/N: S5GXNX0T104829K • RATED DC+3.3V 2.9A</text>
+
+  <!-- Barcode -->
+  <g fill="#ffffff">
+    <rect x="180" y="180" width="2" height="16" /><rect x="185" y="180" width="4" height="16" />
+    <rect x="192" y="180" width="3" height="16" /><rect x="198" y="180" width="5" height="16" />
+    <rect x="206" y="180" width="2" height="16" /><rect x="211" y="180" width="4" height="16" />
+    <rect x="218" y="180" width="6" height="16" /><rect x="227" y="180" width="2" height="16" />
+    <rect x="232" y="180" width="5" height="16" /><rect x="240" y="180" width="3" height="16" />
+    <rect x="246" y="180" width="4" height="16" /><rect x="253" y="180" width="2" height="16" />
+    <rect x="258" y="180" width="5" height="16" /><rect x="266" y="180" width="3" height="16" />
+  </g>
+
+  <!-- V-NAND Logo -->
+  <rect x="445" y="145" width="70" height="45" rx="4" fill="#1e293b" stroke="#334155" stroke-width="1" />
+  <text x="480" y="166" font-family="Arial, sans-serif" font-weight="900" font-size="11" fill="#38bdf8" text-anchor="middle">V-NAND</text>
+  <text x="480" y="180" font-family="'Consolas', monospace" font-size="9" fill="#94a3b8" text-anchor="middle">3-bit MLC</text>
+
+  <!-- Badge at Bottom -->
+  <rect x="100" y="245" width="400" height="30" rx="15" fill="#0f172a" stroke="#0284c7" stroke-width="1.5" />
+  <text x="300" y="265" font-family="'Segoe UI', Arial, sans-serif" font-weight="bold" font-size="13" fill="#38bdf8" text-anchor="middle">🚀 SAMSUNG 980 PRO PCIe 4.0 NVMe M.2 SSD 1TB</text>
+</svg>

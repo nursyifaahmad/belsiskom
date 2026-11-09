@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="camBody" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#334155" />
+      <stop offset="40%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="lensGlass" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="40%" stop-color="#0369a1" />
+      <stop offset="80%" stop-color="#1e1b4b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <radialGradient id="lensReflection" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.8" />
+      <stop offset="50%" stop-color="#0284c7" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.9" />
+    </radialGradient>
+    <filter id="camShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="12" stdDeviation="10" flood-color="#000" flood-opacity="0.5" />
+    </filter>
+  </defs>
+
+  <!-- Dark Studio Background -->
+  <rect width="600" height="450" rx="16" fill="#090d16" />
+
+  <!-- Background Ambient Glow -->
+  <circle cx="300" cy="180" r="180" fill="#0284c7" opacity="0.12" filter="blur(30px)" />
+
+  <!-- Articulated Monitor Clamp Stand at Bottom -->
+  <!-- Lower Clamp Foot -->
+  <path d="M 230,310 L 370,310 L 390,380 L 210,380 Z" fill="#1e293b" stroke="#334155" stroke-width="3" />
+  <rect x="220" y="380" width="160" height="18" rx="4" fill="#0f172a" stroke="#1e293b" stroke-width="2" />
+  <!-- Stand Neck / Hinge -->
+  <rect x="275" y="235" width="50" height="85" rx="6" fill="#334155" stroke="#475569" stroke-width="2" />
+  <!-- Swivel Ball Joint Pivot -->
+  <circle cx="300" cy="235" r="22" fill="#64748b" stroke="#94a3b8" stroke-width="2" />
+
+  <!-- USB Cable Exiting from Base -->
+  <path d="M 300,320 Q 300,420 380,430" stroke="#0284c7" stroke-width="6" fill="none" stroke-linecap="round" />
+
+  <!-- Logitech C920 Main Camera Head (Horizontal Oval Bar) -->
+  <g filter="url(#camShadow)">
+    <rect x="80" y="110" width="440" height="115" rx="55" fill="url(#camBody)" stroke="#475569" stroke-width="3" />
+    <!-- Front Shiny Glass Panel -->
+    <rect x="110" y="125" width="380" height="85" rx="42" fill="#090d16" stroke="#1e293b" stroke-width="2" />
+  </g>
+
+  <!-- Left Stereo Microphone Grille -->
+  <g fill="#334155">
+    <circle cx="145" cy="155" r="3" /><circle cx="155" cy="155" r="3" /><circle cx="165" cy="155" r="3" />
+    <circle cx="145" cy="167" r="3" /><circle cx="155" cy="167" r="3" /><circle cx="165" cy="167" r="3" />
+    <circle cx="145" cy="180" r="3" /><circle cx="155" cy="180" r="3" /><circle cx="165" cy="180" r="3" />
+  </g>
+
+  <!-- Right Stereo Microphone Grille -->
+  <g fill="#334155">
+    <circle cx="435" cy="155" r="3" /><circle cx="445" cy="155" r="3" /><circle cx="455" cy="155" r="3" />
+    <circle cx="435" cy="167" r="3" /><circle cx="445" cy="167" r="3" /><circle cx="455" cy="167" r="3" />
+    <circle cx="435" cy="180" r="3" /><circle cx="445" cy="180" r="3" /><circle cx="455" cy="180" r="3" />
+  </g>
+
+  <!-- Blue LED Activity Indicators on sides of lens -->
+  <circle cx="215" cy="167" r="6" fill="#38bdf8" />
+  <circle cx="215" cy="167" r="10" fill="#38bdf8" opacity="0.3" />
+  <circle cx="385" cy="167" r="6" fill="#38bdf8" />
+  <circle cx="385" cy="167" r="10" fill="#38bdf8" opacity="0.3" />
+
+  <!-- Center Full HD Glass Lens Assembly -->
+  <!-- Outer Silver Bezel Ring -->
+  <circle cx="300" cy="167" r="54" fill="#64748b" stroke="#cbd5e1" stroke-width="3" filter="url(#camShadow)" />
+  <!-- Knurled Ring -->
+  <circle cx="300" cy="167" r="48" fill="#1e293b" stroke="#0f172a" stroke-width="2" />
+
+  <!-- Glass Optical Lens Elements -->
+  <circle cx="300" cy="167" r="42" fill="url(#lensGlass)" />
+  <circle cx="300" cy="167" r="42" fill="url(#lensReflection)" />
+
+  <!-- Optical Reflection Highlights -->
+  <ellipse cx="288" cy="152" rx="14" ry="7" transform="rotate(-30 288 152)" fill="#ffffff" opacity="0.75" />
+  <ellipse cx="316" cy="182" rx="8" ry="4" transform="rotate(-30 316 182)" fill="#38bdf8" opacity="0.5" />
+  <!-- Center Sensor Aperture Pupil -->
+  <circle cx="300" cy="167" r="16" fill="#020617" stroke="#1d4ed8" stroke-width="1.5" />
+
+  <!-- Lens Engraving Text Around Ring -->
+  <text x="300" y="100" font-family="'Consolas', monospace" font-weight="bold" font-size="11" fill="#94a3b8" text-anchor="middle">CARL ZEISS TESSAR • HD 1080p</text>
+
+  <!-- Product Name Badge at Bottom -->
+  <rect x="140" y="405" width="320" height="30" rx="15" fill="#0f172a" stroke="#0284c7" stroke-width="1.5" />
+  <text x="300" y="425" font-family="'Segoe UI', Arial, sans-serif" font-weight="bold" font-size="13" fill="#38bdf8" text-anchor="middle">📷 LOGITECH C920 HD PRO WEBCAM</text>
+</svg>
