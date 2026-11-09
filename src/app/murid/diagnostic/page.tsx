@@ -193,9 +193,26 @@ export default function DiagnosticPage() {
           </div>
 
           {/* Question Text */}
-          <div className="text-base md:text-lg font-medium text-slate-100 leading-relaxed mb-6">
+          <div className="text-base md:text-lg font-medium text-slate-100 leading-relaxed mb-4">
             {currentQ.question}
           </div>
+
+          {/* Hardware Question Visual Stimulus Image */}
+          {currentQ.image && (
+            <div className="mb-6 rounded-2xl overflow-hidden border-2 border-slate-700/80 bg-slate-950/70 p-4 flex flex-col items-center justify-center shadow-inner group">
+              <div className="relative w-full max-w-sm flex items-center justify-center">
+                <img
+                  src={currentQ.image}
+                  alt={currentQ.question}
+                  className="max-h-48 md:max-h-56 w-auto object-contain drop-shadow-xl transition-transform duration-300 group-hover:scale-105"
+                  loading="eager"
+                />
+              </div>
+              <div className="mt-2.5 px-3 py-1 rounded-full bg-slate-800/80 border border-slate-700 text-[11px] text-amber-300 font-medium flex items-center gap-1.5">
+                <span>🔍 Amati detail gambar perangkat di atas dengan teliti!</span>
+              </div>
+            </div>
+          )}
 
           {/* Multiple Choice Options (A, B, C, D) */}
           <div className="space-y-3">

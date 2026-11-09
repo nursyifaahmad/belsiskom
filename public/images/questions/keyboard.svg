@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 240" width="100%" height="100%">
+  <defs>
+    <linearGradient id="kbBody" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <filter id="kbShadow" x="-5%" y="-5%" width="110%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="5" flood-color="#000" flood-opacity="0.4" />
+    </filter>
+  </defs>
+
+  <!-- Keyboard Base -->
+  <rect x="20" y="30" width="460" height="180" rx="12" fill="url(#kbBody)" stroke="#334155" stroke-width="3" filter="url(#kbShadow)" />
+
+  <!-- USB Cable at Top -->
+  <line x1="250" y1="30" x2="250" y2="5" stroke="#0284c7" stroke-width="6" />
+
+  <!-- Brand & Status LEDs -->
+  <text x="45" y="55" font-family="Arial, sans-serif" font-weight="bold" font-size="14" fill="#38bdf8">KEYBOARD USB</text>
+  <circle cx="430" cy="50" r="3.5" fill="#22c55e" />
+  <circle cx="445" cy="50" r="3.5" fill="#22c55e" />
+  <circle cx="460" cy="50" r="3.5" fill="#64748b" />
+
+  <!-- Keycaps Matrix -->
+  <!-- Row 1: Function keys -->
+  <g fill="#1e293b" stroke="#475569" stroke-width="1.5" font-family="'Consolas', monospace" font-size="10" font-weight="bold">
+    <rect x="40" y="65" width="28" height="20" rx="3" fill="#2563eb" /><text x="54" y="79" fill="#fff" text-anchor="middle">ESC</text>
+    <rect x="75" y="65" width="26" height="20" rx="3" /><text x="88" y="79" fill="#cbd5e1" text-anchor="middle">F1</text>
+    <rect x="105" y="65" width="26" height="20" rx="3" /><text x="118" y="79" fill="#cbd5e1" text-anchor="middle">F2</text>
+    <rect x="135" y="65" width="26" height="20" rx="3" /><text x="148" y="79" fill="#cbd5e1" text-anchor="middle">F3</text>
+    <rect x="165" y="65" width="26" height="20" rx="3" /><text x="178" y="79" fill="#cbd5e1" text-anchor="middle">F4</text>
+    <rect x="205" y="65" width="26" height="20" rx="3" /><text x="218" y="79" fill="#cbd5e1" text-anchor="middle">F5</text>
+    <rect x="235" y="65" width="26" height="20" rx="3" /><text x="248" y="79" fill="#cbd5e1" text-anchor="middle">F6</text>
+    <rect x="265" y="65" width="26" height="20" rx="3" /><text x="278" y="79" fill="#cbd5e1" text-anchor="middle">F7</text>
+    <rect x="295" y="65" width="26" height="20" rx="3" /><text x="308" y="79" fill="#cbd5e1" text-anchor="middle">F8</text>
+    <rect x="335" y="65" width="26" height="20" rx="3" /><text x="348" y="79" fill="#cbd5e1" text-anchor="middle">F9</text>
+    <rect x="365" y="65" width="26" height="20" rx="3" /><text x="378" y="79" fill="#cbd5e1" text-anchor="middle">F10</text>
+    <rect x="395" y="65" width="26" height="20" rx="3" /><text x="408" y="79" fill="#cbd5e1" text-anchor="middle">F11</text>
+    <rect x="425" y="65" width="35" height="20" rx="3" fill="#dc2626" /><text x="442" y="79" fill="#fff" text-anchor="middle">DEL</text>
+  </g>
+
+  <!-- Row 2: Number Row -->
+  <g fill="#0f172a" stroke="#334155" stroke-width="1.5" font-family="'Segoe UI', Arial" font-size="11" font-weight="bold">
+    <rect x="40" y="92" width="26" height="22" rx="3" /><text x="53" y="107" fill="#cbd5e1" text-anchor="middle">`</text>
+    <rect x="70" y="92" width="26" height="22" rx="3" /><text x="83" y="107" fill="#cbd5e1" text-anchor="middle">1</text>
+    <rect x="100" y="92" width="26" height="22" rx="3" /><text x="113" y="107" fill="#cbd5e1" text-anchor="middle">2</text>
+    <rect x="130" y="92" width="26" height="22" rx="3" /><text x="143" y="107" fill="#cbd5e1" text-anchor="middle">3</text>
+    <rect x="160" y="92" width="26" height="22" rx="3" /><text x="173" y="107" fill="#cbd5e1" text-anchor="middle">4</text>
+    <rect x="190" y="92" width="26" height="22" rx="3" /><text x="203" y="107" fill="#cbd5e1" text-anchor="middle">5</text>
+    <rect x="220" y="92" width="26" height="22" rx="3" /><text x="233" y="107" fill="#cbd5e1" text-anchor="middle">6</text>
+    <rect x="250" y="92" width="26" height="22" rx="3" /><text x="263" y="107" fill="#cbd5e1" text-anchor="middle">7</text>
+    <rect x="280" y="92" width="26" height="22" rx="3" /><text x="293" y="107" fill="#cbd5e1" text-anchor="middle">8</text>
+    <rect x="310" y="92" width="26" height="22" rx="3" /><text x="323" y="107" fill="#cbd5e1" text-anchor="middle">9</text>
+    <rect x="340" y="92" width="26" height="22" rx="3" /><text x="353" y="107" fill="#cbd5e1" text-anchor="middle">0</text>
+    <rect x="370" y="92" width="42" height="22" rx="3" /><text x="391" y="107" fill="#cbd5e1" text-anchor="middle">BKSP</text>
+    <rect x="418" y="92" width="42" height="22" rx="3" /><text x="439" y="107" fill="#cbd5e1" text-anchor="middle">NUM</text>
+  </g>
+
+  <!-- Row 3: QWERTY Row -->
+  <g fill="#0f172a" stroke="#334155" stroke-width="1.5" font-family="'Segoe UI', Arial" font-size="11" font-weight="bold">
+    <rect x="40" y="120" width="38" height="22" rx="3" /><text x="59" y="135" fill="#cbd5e1" text-anchor="middle">TAB</text>
+    <rect x="82" y="120" width="26" height="22" rx="3" /><text x="95" y="135" fill="#93c5fd" text-anchor="middle">Q</text>
+    <rect x="112" y="120" width="26" height="22" rx="3" /><text x="125" y="135" fill="#93c5fd" text-anchor="middle">W</text>
+    <rect x="142" y="120" width="26" height="22" rx="3" /><text x="155" y="135" fill="#93c5fd" text-anchor="middle">E</text>
+    <rect x="172" y="120" width="26" height="22" rx="3" /><text x="185" y="135" fill="#93c5fd" text-anchor="middle">R</text>
+    <rect x="202" y="120" width="26" height="22" rx="3" /><text x="215" y="135" fill="#93c5fd" text-anchor="middle">T</text>
+    <rect x="232" y="120" width="26" height="22" rx="3" /><text x="245" y="135" fill="#93c5fd" text-anchor="middle">Y</text>
+    <rect x="262" y="120" width="26" height="22" rx="3" /><text x="275" y="135" fill="#93c5fd" text-anchor="middle">U</text>
+    <rect x="292" y="120" width="26" height="22" rx="3" /><text x="305" y="135" fill="#93c5fd" text-anchor="middle">I</text>
+    <rect x="322" y="120" width="26" height="22" rx="3" /><text x="335" y="135" fill="#93c5fd" text-anchor="middle">O</text>
+    <rect x="352" y="120" width="26" height="22" rx="3" /><text x="365" y="135" fill="#93c5fd" text-anchor="middle">P</text>
+    <rect x="382" y="120" width="78" height="22" rx="3" fill="#2563eb" /><text x="421" y="135" fill="#fff" text-anchor="middle">ENTER</text>
+  </g>
+
+  <!-- Row 4: ASDF & Spacebar -->
+  <g fill="#0f172a" stroke="#334155" stroke-width="1.5" font-family="'Segoe UI', Arial" font-size="11" font-weight="bold">
+    <rect x="40" y="148" width="46" height="22" rx="3" /><text x="63" y="163" fill="#cbd5e1" text-anchor="middle">CAPS</text>
+    <rect x="90" y="148" width="26" height="22" rx="3" /><text x="103" y="163" fill="#cbd5e1" text-anchor="middle">A</text>
+    <rect x="120" y="148" width="26" height="22" rx="3" /><text x="133" y="163" fill="#cbd5e1" text-anchor="middle">S</text>
+    <rect x="150" y="148" width="26" height="22" rx="3" /><text x="163" y="163" fill="#cbd5e1" text-anchor="middle">D</text>
+    <rect x="180" y="148" width="26" height="22" rx="3" /><text x="193" y="163" fill="#cbd5e1" text-anchor="middle">F</text>
+    <rect x="210" y="148" width="26" height="22" rx="3" /><text x="223" y="163" fill="#cbd5e1" text-anchor="middle">G</text>
+    <rect x="240" y="148" width="26" height="22" rx="3" /><text x="253" y="163" fill="#cbd5e1" text-anchor="middle">H</text>
+    <rect x="270" y="148" width="26" height="22" rx="3" /><text x="283" y="163" fill="#cbd5e1" text-anchor="middle">J</text>
+    <rect x="300" y="148" width="26" height="22" rx="3" /><text x="313" y="163" fill="#cbd5e1" text-anchor="middle">K</text>
+    <rect x="330" y="148" width="26" height="22" rx="3" /><text x="343" y="163" fill="#cbd5e1" text-anchor="middle">L</text>
+    <rect x="360" y="148" width="100" height="22" rx="3" /><text x="410" y="163" fill="#cbd5e1" text-anchor="middle">SHIFT</text>
+  </g>
+
+  <!-- Row 5: Spacebar Row -->
+  <g fill="#0f172a" stroke="#334155" stroke-width="1.5" font-family="'Segoe UI', Arial" font-size="11" font-weight="bold">
+    <rect x="40" y="176" width="36" height="24" rx="3" /><text x="58" y="192" fill="#cbd5e1" text-anchor="middle">CTRL</text>
+    <rect x="80" y="176" width="32" height="24" rx="3" /><text x="96" y="192" fill="#38bdf8" text-anchor="middle">WIN</text>
+    <rect x="116" y="176" width="32" height="24" rx="3" /><text x="132" y="192" fill="#cbd5e1" text-anchor="middle">ALT</text>
+    <!-- Long Spacebar -->
+    <rect x="152" y="176" width="190" height="24" rx="4" fill="#1e40af" stroke="#3b82f6" /><text x="247" y="192" fill="#ffffff" text-anchor="middle">SPACEBAR</text>
+    <rect x="346" y="176" width="32" height="24" rx="3" /><text x="362" y="192" fill="#cbd5e1" text-anchor="middle">ALT</text>
+    <rect x="382" y="176" width="36" height="24" rx="3" /><text x="400" y="192" fill="#cbd5e1" text-anchor="middle">FN</text>
+    <rect x="422" y="176" width="38" height="24" rx="3" /><text x="441" y="192" fill="#cbd5e1" text-anchor="middle">CTRL</text>
+  </g>
+</svg>

@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 420" width="100%" height="100%">
+  <defs>
+    <linearGradient id="mouseGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#334155" />
+      <stop offset="50%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <filter id="mouseShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="10" stdDeviation="8" flood-color="#000" flood-opacity="0.5" />
+    </filter>
+  </defs>
+
+  <!-- USB Cable at Top -->
+  <path d="M 180,60 Q 180,20 150,10" stroke="#0284c7" stroke-width="8" fill="none" stroke-linecap="round" />
+
+  <!-- Mouse Ergonomic Body Shell -->
+  <path d="M 180,60 C 100,60 80,140 80,230 C 80,330 110,380 180,380 C 250,380 280,330 280,230 C 280,140 260,60 180,60 Z"
+        fill="url(#mouseGrad)" stroke="#475569" stroke-width="4" filter="url(#mouseShadow)" />
+
+  <!-- Split Line for Left and Right Click Buttons -->
+  <line x1="180" y1="60" x2="180" y2="185" stroke="#020617" stroke-width="3" />
+
+  <!-- Left Click Accent Guide -->
+  <path d="M 100,100 Q 130,80 170,80" stroke="#38bdf8" stroke-width="2" fill="none" opacity="0.6" />
+  <!-- Right Click Accent Guide -->
+  <path d="M 260,100 Q 230,80 190,80" stroke="#38bdf8" stroke-width="2" fill="none" opacity="0.6" />
+
+  <!-- Ribbed Scroll Wheel (Biru) -->
+  <rect x="168" y="95" width="24" height="52" rx="10" fill="#2563eb" stroke="#1d4ed8" stroke-width="2" />
+  <!-- Grip Ribs on Scroll Wheel -->
+  <line x1="168" y1="108" x2="192" y2="108" stroke="#93c5fd" stroke-width="2" />
+  <line x1="168" y1="120" x2="192" y2="120" stroke="#93c5fd" stroke-width="2" />
+  <line x1="168" y1="132" x2="192" y2="132" stroke="#93c5fd" stroke-width="2" />
+
+  <!-- DPI Button Behind Scroll Wheel -->
+  <rect x="172" y="160" width="16" height="20" rx="4" fill="#64748b" stroke="#334155" stroke-width="1.5" />
+
+  <!-- Curved RGB Light Strip on Palm Rest -->
+  <path d="M 115,260 C 115,340 245,340 245,260" stroke="#38bdf8" stroke-width="4" fill="none" stroke-linecap="round" />
+
+  <!-- Glowing Gaming Brand Logo in Center of Palm Rest -->
+  <polygon points="180,240 192,265 168,265" fill="#38bdf8" />
+  <polygon points="180,280 168,255 192,255" fill="#38bdf8" />
+
+  <!-- Red Optical Sensor Beam Illustration Cue at Base -->
+  <ellipse cx="180" cy="380" rx="30" ry="10" fill="#ef4444" opacity="0.6" filter="url(#mouseShadow)" />
+
+  <text x="180" y="410" font-family="'Consolas', monospace" font-weight="bold" font-size="12" fill="#facc15" text-anchor="middle">MOUSE OPTIK (INPUT DEVICE)</text>
+</svg>
