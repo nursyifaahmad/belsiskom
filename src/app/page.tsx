@@ -13,7 +13,8 @@ import {
   RotateCw, 
   BookOpen, 
   Layers, 
-  Users
+  Users,
+  Lock
 } from 'lucide-react';
 import { usePersistentStudentState } from '@/hooks/usePersistentStudentState';
 
@@ -23,14 +24,10 @@ export default function HomePage() {
 
   const [activeSession, setActiveSession] = useState<any>(null);
   const [checkingSession, setCheckingSession] = useState(true);
-  const [validatingSession, setValidatingSession] = useState(false);
-  const [sessionInputCode, setSessionInputCode] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
 
-  // Check active session on mount
+  // Check active session on mount & auto-poll
   const checkSessionStatus = async () => {
-    setCheckingSession(true);
-    setErrorMsg('');
     try {
       const res = await fetch('/api/session/check');
       const data = await res.json();
@@ -49,45 +46,17 @@ export default function HomePage() {
 
   useEffect(() => {
     checkSessionStatus();
+    // Auto-polling setiap 4 detik agar status sesi langsung aktif saat guru mengaktifkan sesi
+    const interval = setInterval(checkSessionStatus, 4000);
+    return () => clearInterval(interval);
   }, []);
 
-  const handleStartLearning = async () => {
+  const handleStartLearning = () => {
     setErrorMsg('');
-    const typedCode = sessionInputCode.trim().toUpperCase();
-
-    // Kasus 1: Murid memasukkan kode secara manual
-    if (typedCode) {
-      setValidatingSession(true);
-      try {
-        const res = await fetch(`/api/session/check?code=${encodeURIComponent(typedCode)}`);
-        const data = await res.json();
-
-        if (!res.ok || !data.ok) {
-          setErrorMsg(data.message || `Kode sesi "${typedCode}" tidak ditemukan! Periksa kembali kode dari Pak Guru Ahmad Nursyifa.`);
-          setValidatingSession(false);
-          return;
-        }
-
-        if (!data.session?.isActive) {
-          setErrorMsg(`Sesi "${typedCode}" sedang DITUTUP oleh Pak Guru Ahmad Nursyifa. Anda tidak dapat masuk.`);
-          setValidatingSession(false);
-          return;
-        }
-
-        // Kode terverifikasi dan aktif!
-        router.push(`/murid/register?code=${encodeURIComponent(typedCode)}`);
-      } catch (err: any) {
-        setErrorMsg('Gagal memverifikasi sesi: ' + err.message);
-        setValidatingSession(false);
-      }
-      return;
-    }
-
-    // Kasus 2: Murid tidak mengetik kode, cek sesi otomatis dari server
     if (activeSession && activeSession.isActive) {
       router.push(`/murid/register?code=${encodeURIComponent(activeSession.code)}`);
     } else {
-      setErrorMsg('Belum ada sesi belajar yang dibuka oleh Pak Guru Ahmad Nursyifa. Masukkan kode sesi yang valid jika guru telah membagikannya.');
+      setErrorMsg('Sesi pembelajaran belum dibuka oleh Pak Guru Ahmad Nursyifa.');
     }
   };
 
@@ -193,9 +162,10 @@ export default function HomePage() {
           </div>
 
           <div className="my-6">
-            {checkingSession ? (
-              <div className="p-4 rounded-xl bg-slate-800/50 text-center text-sm text-slate-400">
-                Memeriksa status sesi pembelajaran...
+            {checkingSession && !activeSession ? (
+              <div className="p-4 rounded-xl bg-slate-800/50 text-center text-sm text-slate-400 flex items-center justify-center gap-2">
+                <RotateCw className="w-4 h-4 animate-spin text-blue-400" />
+                <span>Memeriksa status sesi pembelajaran...</span>
               </div>
             ) : activeSession ? (
               <div className="p-4 rounded-2xl bg-emerald-950/60 border border-emerald-500/40 text-emerald-200">
@@ -208,12 +178,6 @@ export default function HomePage() {
                     </div>
                   </div>
                 </div>
-                <div className="mt-3 pt-3 border-t border-emerald-500/20 flex items-center justify-between text-xs">
-                  <span>Kode Sesi:</span>
-                  <span className="font-mono font-bold text-sm bg-emerald-900/60 px-2 py-0.5 rounded text-white">
-                    {activeSession.code}
-                  </span>
-                </div>
               </div>
             ) : (
               <div className="p-4 rounded-2xl bg-rose-950/50 border border-rose-500/40 text-rose-200">
@@ -222,7 +186,7 @@ export default function HomePage() {
                   <div>
                     <div className="font-bold text-sm">Sesi Belum Dibuka</div>
                     <div className="text-xs text-rose-300/80 mt-0.5">
-                      Pak Guru Ahmad Nursyifa belum mengaktifkan sesi kelas. Silakan tunggu aba-aba guru atau masukkan kode khusus jika ada.
+                      Pak Guru Ahmad Nursyifa belum mengaktifkan sesi kelas. Tombol mulai belajar akan aktif otomatis ketika guru membuka sesi pembelajaran.
                     </div>
                   </div>
                 </div>
@@ -230,42 +194,36 @@ export default function HomePage() {
             )}
           </div>
 
-          {/* Manual Code Input (Optional if active session not auto-detected) */}
           <div className="space-y-4">
-            <div>
-              <label className="block text-xs font-semibold text-slate-300 mb-1.5">
-                Kode Sesi Pembelajaran:
-              </label>
-              <input
-                type="text"
-                placeholder={activeSession ? activeSession.code : 'Contoh: BSK-7A1'}
-                value={sessionInputCode}
-                onChange={(e) => setSessionInputCode(e.target.value.toUpperCase())}
-                className="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white placeholder-slate-500 font-mono font-bold tracking-wider text-center focus:outline-none focus:border-blue-500 transition"
-              />
-            </div>
-
             {errorMsg && (
               <p className="text-xs text-rose-400 font-medium text-center">{errorMsg}</p>
             )}
 
-            <button
-              onClick={handleStartLearning}
-              disabled={validatingSession || checkingSession}
-              className="w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-sm md:text-base shadow-lg shadow-blue-600/30 flex items-center justify-center gap-2 transition active:scale-[0.98] disabled:opacity-60"
-            >
-              {validatingSession ? (
-                <>
-                  <RotateCw className="w-4 h-4 animate-spin" />
-                  <span>Memeriksa Kode Sesi...</span>
-                </>
-              ) : (
-                <>
-                  <span>Mulai Belajar BELSISKOM</span>
-                  <ArrowRight className="w-4 h-4" />
-                </>
-              )}
-            </button>
+            {checkingSession && !activeSession ? (
+              <button
+                disabled
+                className="w-full py-3.5 px-6 rounded-xl bg-slate-800 border border-slate-700 text-slate-400 font-bold text-sm md:text-base flex items-center justify-center gap-2 cursor-wait opacity-80"
+              >
+                <RotateCw className="w-4 h-4 animate-spin text-slate-400" />
+                <span>Memeriksa Sesi Pembelajaran...</span>
+              </button>
+            ) : activeSession ? (
+              <button
+                onClick={handleStartLearning}
+                className="w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-sm md:text-base shadow-lg shadow-blue-600/40 flex items-center justify-center gap-2 transition active:scale-[0.98] cursor-pointer animate-pulse-subtle"
+              >
+                <span>Mulai Belajar BELSISKOM</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            ) : (
+              <button
+                disabled
+                className="w-full py-3.5 px-6 rounded-xl bg-slate-800/80 border border-slate-700/80 text-slate-400 font-bold text-sm md:text-base flex items-center justify-center gap-2 cursor-not-allowed opacity-75 shadow-none"
+              >
+                <Lock className="w-4 h-4 text-slate-500" />
+                <span>Menunggu Guru Mengaktifkan Sesi...</span>
+              </button>
+            )}
           </div>
         </div>
 

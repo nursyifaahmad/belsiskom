@@ -274,19 +274,6 @@ function RegisterForm() {
         )}
 
         <form onSubmit={handleSubmit} className="space-y-4">
-          {/* Kode Sesi (Readonly terverifikasi) */}
-          <div>
-            <label className="block text-xs font-semibold text-slate-300 mb-1">
-              Kode Sesi Guru:
-            </label>
-            <input
-              type="text"
-              readOnly
-              value={sessionCode}
-              className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-blue-300 font-mono text-sm tracking-wider font-bold cursor-not-allowed opacity-90 focus:outline-none"
-            />
-          </div>
-
           {/* Nama Lengkap */}
           <div>
             <label className="block text-xs font-semibold text-slate-300 mb-1">
