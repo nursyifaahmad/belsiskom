@@ -543,7 +543,7 @@ async function main() {
         </div>
         <p>
           <strong>Assalamu’alaikum Wr. Wb. & Salam Semangat untuk Seluruh Siswa-Siswi Hebat Kelas 7!</strong><br>
-          Pada pertemuan hari ini, Pak Guru Ahmad Nursyifa, S.Kom. berhalangan hadir tatap muka di ruang kelas karena sedang menjalankan tugas kedinasan sekolah. Agar jam pelajaran tetap produktif dan bermakna, kamu diberikan <strong>Misi Belajar Mandiri Terbimbing</strong> menggunakan Smartphone (HP) masing-masing melalui web <strong>BELSISKOM</strong>. Ikuti setiap langkah di panduan ini secara berurutan, tertib, dan junjung tinggi kejujuran!
+          Pada pertemuan hari ini, Pak Guru Ahmad Nursyifa, S.Kom. berhalangan hadir tatap muka di ruang kelas karena sedang ada kegiatan penting di luar sekolah. Agar jam pelajaran tetap produktif dan bermakna, kamu diberikan <strong>Misi Belajar Mandiri Terbimbing</strong> menggunakan Smartphone (HP) masing-masing melalui web <strong>BELSISKOM</strong>. Ikuti setiap langkah di panduan ini secara berurutan, tertib, dan junjung tinggi kejujuran!
         </p>
       </div>
 
